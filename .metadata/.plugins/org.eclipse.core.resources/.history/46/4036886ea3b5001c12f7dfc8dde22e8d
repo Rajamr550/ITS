@@ -1,0 +1,19 @@
+package com.zensar.actuator;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.autoconfigure.info.InfoContributorProperties;
+import org.springframework.boot.info.BuildProperties;
+import org.springframework.stereotype.Service;
+
+@Service
+
+public class CustomInfo extends InfoContributorProperties {
+
+	@Autowired
+	public CustomInfo(BuildProperties properties) {
+		super();
+		// TODO Auto-generated constructor stub
+		properties.toString();
+	}
+
+}

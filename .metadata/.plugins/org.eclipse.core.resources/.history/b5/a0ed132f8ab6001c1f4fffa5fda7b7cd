@@ -1,0 +1,34 @@
+package com.olx.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.modelmapper.TypeMap;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.olx.dto.Category;
+import com.olx.dto.Status;
+import com.olx.entity.CategoryEntity;
+import com.olx.entity.StatusEntity;
+import com.olx.repository.CategoryRepo;
+
+@Service
+public class MasterServiceImpl implements MasterService {
+    @Autowired
+    CategoryRepo categoryRepo;
+
+    @Override
+    public List<CategoryEntity> getAllCategory() {
+	List<CategoryEntity> categoryEntityList = categoryRepo.findAll();
+
+	return  categoryEntityList;
+    }
+
+    @Override
+    public List<Status> getAllStatus() {
+	// TODO Auto-generated method stub
+	return null;
+    }
+
+}

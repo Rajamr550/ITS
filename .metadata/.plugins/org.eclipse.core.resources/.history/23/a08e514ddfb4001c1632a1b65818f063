@@ -1,0 +1,9 @@
+package com.olx.service;
+
+import com.olx.controller.Cateogry;
+import com.olx.controller.List;
+
+public interface MasterService {
+	public List<Cateogry> getAllCategory();
+	public List<Status> getAllStatus();
+}

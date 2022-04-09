@@ -1,0 +1,30 @@
+package com.zensar.service;
+
+
+
+
+import java.util.List;
+
+
+
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+
+
+
+import com.zensar.dto.Stock;
+
+
+
+import io.swagger.annotations.ApiParam;
+
+
+
+public interface StockService {
+public abstract Stock updateStock(int stockId, Stock updatedStock);
+public abstract Boolean deleteAllStocks();
+public abstract Boolean deleteStocksByID(int stockId);
+public abstract Stock createStock(Stock stock);
+public abstract List<Stock> getAllStocks();
+public abstract List<Stock> updateStocks();
+}

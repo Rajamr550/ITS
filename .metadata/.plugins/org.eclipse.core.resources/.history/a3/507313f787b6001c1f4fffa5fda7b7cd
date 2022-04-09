@@ -1,0 +1,33 @@
+package com.olx.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.modelmapper.TypeMap;
+import org.springframework.stereotype.Service;
+
+import com.olx.dto.Category;
+import com.olx.dto.Status;
+import com.olx.entity.CategoryEntity;
+import com.olx.repository.CategoryRepo;
+
+@Service
+public class MasterServiceImpl implements MasterService {
+
+    @Override
+    public List<Category> getAllCategory() {
+	List<CategoryEntity> CategoryEntityList = CategoryRepo.findAll();
+	List<Category> CategoryDtoList = new ArrayList<Category>();
+	for (CategoryEntity CategoryEntity : CategoryEntityList) {
+	    CategoryDtoList.add(Category);
+	}
+	return CategoryDtoList;
+    }
+
+    @Override
+    public List<Status> getAllStatus() {
+	// TODO Auto-generated method stub
+	return null;
+    }
+
+}

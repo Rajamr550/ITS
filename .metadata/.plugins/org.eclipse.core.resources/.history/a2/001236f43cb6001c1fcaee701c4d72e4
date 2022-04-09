@@ -1,0 +1,23 @@
+package com.zensar.service;
+
+import java.util.List;
+
+import com.zensar.dto.Stock;
+
+public interface StockService {
+    public abstract Stock updateStock(int stockId, Stock updatedStock);
+
+    public abstract Boolean deleteAllStocks();
+
+    public abstract Boolean deleteStocksById(int stockId);
+
+    public abstract Stock createNewStock(Stock stock);
+
+    public abstract List<Stock> getAllStocks();
+
+    public abstract List<Stock> updateStocks();
+
+    public abstract Stock getStockById(int StockId);
+    
+
+}

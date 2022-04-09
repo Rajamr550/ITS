@@ -1,0 +1,70 @@
+package com.olx.controller;
+
+import java.util.List;
+import java.util.Locale.Category;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.olx.dto.Adv;
+import com.olx.service.AdvService;
+
+@RestController
+@RequestMapping("/advertise")
+@CrossOrigin(origins = "*")
+
+public class AdvController {
+	@Autowired
+	AdvService advService;
+	
+	//8
+	@PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public Adv postAdvertise(Adv adv) {
+		return advService.postAdvertise(adv);
+	}
+
+	//9
+    @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+public Adv updateAdvertise(Adv adv) {
+		return advService.updateAdvertise(adv);
+
+    }
+	
+	
+	@GetMapping(value = "/user/advertise", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Adv> getAllAdvByUser(){
+		return null;
+	}
+
+	@GetMapping(value = "/user/advertise/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Adv> getAdvByUser(){
+		return null;
+	} 
+	
+	//13 
+	@GetMapping(value = "/search/filter", produces = MediaType.APPLICATION_JSON_VALUE)
+	public Adv filterAdv(Adv adv){
+		return advService.filterAdv(adv);
+	} 
+	
+	//14 
+	@GetMapping(value = "/search", produces = MediaType.APPLICATION_JSON_VALUE)
+	public Adv SearchAdvByText(String searchText){
+		return advService.SearchAdvByText(searchText);
+	} 
+	
+	
+	//15
+	
+	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public Adv returnAdv(int id){
+		return advService.returnAdv(id);
+	} 
+	
+}

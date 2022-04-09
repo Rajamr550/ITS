@@ -1,0 +1,16 @@
+package com.olx.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
+
+@ApiModel(value="Adv Dto")
+public class Adv {
+	
+private String title;
+private int price;
+private int catId;
+private String desc;
+}

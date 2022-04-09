@@ -1,0 +1,36 @@
+package com.olx.actuator;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.PostConstruct;
+
+import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
+import org.springframework.boot.actuate.endpoint.annotation.ReadOperation;
+import org.springframework.stereotype.Component;
+
+/*Assignment: Write a custom actuator in OLX-Advertises named '/advstats' which gives us overall statistics of advertises into database. This actuator should render below information:
+1 - Total no of advertises in database
+2 - No of OPEN advertises.
+3 - No of advertises posted within last month.
+Note: since we have not learnt database connectivity, pls generate the values as random numbers.*/
+
+@Component
+@Endpoint(id = "adv-stats")
+public class CustomStatsActuator {
+    private Map<String, List<String>> advStatsMap = new HashMap<>();
+
+    @PostConstruct
+    public void init() {
+	advStatsMap.put("v1", Arrays.asList("Invalid status issue", "Application closing not"));
+	advStatsMap.put("v2", Arrays.asList("Window size change not working", "Window minimizing not working"));
+    }
+
+    @ReadOperation
+    public Map<String, List<String>> getAllBugFixes() {
+	return this.advStatsMap;
+    }
+
+}

@@ -1,0 +1,15 @@
+package com.olx.service;
+
+import java.util.List;
+
+import com.olx.dto.Adv;
+
+public interface AdvService {
+	public Adv postAdvertise(Adv adv);
+	public Adv updateAdvertise(Adv adv);
+	public List<Adv> getAllAdvByUser();
+	public List<Adv> getAdvByUser();
+	public Adv filterAdv(Adv adv);
+	public Adv SearchAdvByText(String searchText);
+	public Adv returnAdv(int id);
+}

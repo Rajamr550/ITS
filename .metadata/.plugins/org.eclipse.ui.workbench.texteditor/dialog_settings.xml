@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="selection" value="port"/>
+		<item key="wrap" value="true"/>
+		<item key="casesensitive" value="true"/>
+		<item key="wholeword" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<list key="findhistory">
+			<item value="port"/>
+			<item value="server"/>
+			<item value="stock"/>
+			<item value="Stock"/>
+			<item value="category"/>
+			<item value="Category"/>
+			<item value="zensar"/>
+			<item value="tock"/>
+			<item value="com.zensar"/>
+			<item value="StockEntity"/>
+			<item value="bugFixesByVersionMap"/>
+			<item value="MasterData"/>
+			<item value="OlxMasterData"/>
+			<item value="StockDemoApp"/>
+			<item value="consumes = MediaType.APPLICATION_JSON_VALUE"/>
+		</list>
+		<list key="replacehistory">
+			<item value="user"/>
+			<item value="User"/>
+			<item value="status"/>
+			<item value="Status"/>
+			<item value="category"/>
+			<item value="Category"/>
+			<item value="olx"/>
+			<item value="com.olx"/>
+			<item value="CategoryEntity"/>
+			<item value="advStatsMap"/>
+			<item value="Advertise"/>
+			<item value="OlxLogin"/>
+			<item value="OlxMasterData"/>
+			<item value="consumes = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE}"/>
+			<item value="produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE}"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="501"/>
+		<item key="DIALOG_Y_ORIGIN" value="213"/>
+		<item key="DIALOG_WIDTH" value="414"/>
+		<item key="DIALOG_HEIGHT" value="454"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+</section>

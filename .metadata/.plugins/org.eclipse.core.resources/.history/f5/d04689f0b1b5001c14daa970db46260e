@@ -1,0 +1,10 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+        base-path: "/stock-monitor"
+        
+  endpoint:
+    shutdown:
+      enabled: true

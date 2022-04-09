@@ -1,0 +1,17 @@
+package com.zensar.actuator;
+
+import org.springframework.boot.actuate.info.BuildInfoContributor;
+import org.springframework.boot.info.BuildProperties;
+import org.springframework.stereotype.Component;
+
+@Component
+
+public class CustomInfo extends BuildInfoContributor {
+
+	public CustomInfo(BuildProperties properties) {
+		super(properties);
+		// TODO Auto-generated constructor stub
+		properties.toString();
+	}
+
+}

@@ -1,0 +1,9 @@
+server:
+  port: 8100
+
+management:
+  endpoints:
+    web:
+      base-path: '/stock-monitor'
+      exposure:
+        include: '*'

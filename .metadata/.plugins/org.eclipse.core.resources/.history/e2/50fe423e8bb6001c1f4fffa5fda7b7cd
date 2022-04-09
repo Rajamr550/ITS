@@ -1,0 +1,54 @@
+package com.olx.service;
+
+import java.util.List;
+
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeMap;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.olx.dto.Category;
+import com.olx.dto.Status;
+import com.olx.entity.CategoryEntity;
+import com.olx.repository.CategoryRepo;
+
+@Service
+public class MasterServiceImpl implements MasterService {
+    @Autowired
+    CategoryRepo categoryRepo;
+
+    @Autowired
+    ModelMapper modelMapper;
+
+    @Override
+    public List<CategoryEntity> getAllCategory() {
+	List<CategoryEntity> categoryEntityList = categoryRepo.findAll();
+
+	return categoryEntityList;
+    }
+
+    @Override
+    public List<Status> getAllStatus() {
+	// TODO Auto-generated method stub
+	return null;
+    }
+
+    private CategoryEntity convertDTOIntoEntity(Category category) {
+	TypeMap<Category, CategoryEntity> tMap = modelMapper.typeMap(Category.class, CategoryEntity.class);
+	tMap.addMappings(mapper -> {
+	    mapper.map(Category::getMarket, CategoryEntity::setMarket);
+	});
+	CategoryEntity categoryEntity = modelMapper.map(category, CategoryEntity.class);
+	return categoryEntity;
+    }
+
+    private Category convertEntityIntoDTO(CategoryEntity categoryEntity) {
+	TypeMap<CategoryEntity, Category> tMap = modelMapper.typeMap(CategoryEntity.class, Category.class);
+	tMap.addMappings(mapper -> {
+	    mapper.map(CategoryEntity::getMarket, Category::setMarket);
+	});
+	Category category = modelMapper.map(categoryEntity, Category.class);
+	return category;
+    }
+
+}

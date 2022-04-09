@@ -1,0 +1,98 @@
+package com.zensar.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.aspectj.weaver.World.TypeMap;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.zensar.dto.Stock;
+import com.zensar.entity.StockEntity;
+import com.zensar.repository.StockRepo;
+
+@Service
+public class StockServiceImpl implements StockService {
+    @Autowired
+    StockRepo stockRepo;
+
+    @Autowired
+    Stock stock;
+
+    static List<Stock> stocks = new ArrayList<Stock>();
+    static {
+	stocks.add(new Stock(1, "zensar", "BSE", 50));
+	stocks.add(new Stock(2, "infosys", "BSE", 40));
+
+    }
+
+    @Override
+    public Boolean deleteAllStocks() {
+	stockRepo.deleteAll();
+	return true;
+
+    }
+
+    @Override
+    public Boolean deleteStocksById(int stockId) {
+	// TODO Auto-generated method stub
+	if (stockRepo.existsById(stockId)) {
+	    stockRepo.deleteById(stockId);
+	    return true;
+	}
+	return false;
+
+    }
+
+    @Override
+    public Stock createNewStock(Stock stock) {
+	StockEntity stockEntity = convertDTOIEntity(stock);
+stockEntity = stockRepo.save(stockEntity);
+
+    }
+
+    @Override
+    public List<Stock> getAllStocks() {
+	stockRepo.findAll();
+	return null;
+    }
+
+    @Override
+    public Stock updateStock(int stockId, Stock updateStock) {
+	// TODO Auto-generated method stub
+	if (stockRepo.existsById(stockId)) {
+	    java.util.Optional<StockEntity> otStockEntity = stockRepo.findById(stockId);
+	    if (otStockEntity.isPresent()) {
+		StockEntity stockEntity = otStockEntity.get();
+		stockEntity.setMarket(updateStock.getMarket());
+		stockEntity.setName(updateStock.getName());
+		stockEntity.setPrice(updateStock.getPrice());
+		stockRepo.save(stockEntity);
+	    }
+	}
+	return null;
+    }
+
+    @Override
+    public Stock getStockById(int stockId) {
+	// TODO Auto-generated method stub
+	if (stockRepo.existsById(stockId)) {
+	    stockRepo.findById(stockId);
+	}
+	return null;
+
+    }
+
+    private StockEntity convertDTOIEntity(Stock stock) {
+	return new StockEntity(stock.getId(), stock.getName(), stock.getMarket(), stock.getPrice());
+	TypeMap<Stock, StockEntity> typeMap = ModelMapper.typeMap(Stock.class, StockEntity.class);
+	typeMap.addMappings(mapper -> stock.getMarket(), StockEntity::setMarket);});
+
+    StockEntity stockEntity = ModelMapper.map(stock, StockEntity.class);return stockEntity;
+
+}private Stock convertEntityIntoDTO(StockEntity stockEntity) {
+    Stock stock = ModelMapper.map(StockEntity,)
+}
+}

@@ -1,0 +1,21 @@
+package com.zensar;
+
+import javax.annotation.PostConstruct;
+
+import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
+import org.springframework.objenesis.instantiator.basic.NewInstanceInstantiator;
+import org.springframework.stereotype.Component;
+
+@Component
+@Endpoint(id = "bug-fixes")
+public class BugFixesActuator {
+    private Map<String, List<String>>bugFixesByVersionMap = new
+HashMap    @PostConstruct
+    public void init() {
+    bugFixesByVersionMap.put("v1", Arrays.asList("Invalid status issue", "Application closing not 
+    working"));
+    bugFixesByVersionMap.put("v2", Arrays.asList("Window size change not working", "Window 
+    minimizing not working"));
+    }
+
+}

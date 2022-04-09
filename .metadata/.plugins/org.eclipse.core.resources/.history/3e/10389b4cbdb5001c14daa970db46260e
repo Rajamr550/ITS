@@ -1,0 +1,61 @@
+package com.olx.service;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.olx.dto.Adv;
+
+@Service
+public class AdvServiceImpl implements AdvService{
+
+	@Override
+	public Adv postAdvertise(Adv adv) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Adv updateAdvertise(Adv adv) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Adv> getAllAdvByUser() {
+		// TODO Auto-generated method stub
+	    sysout
+		return null;
+	}
+	
+	@Override
+	public List<Adv> searchAdvertisesByFilterCriteria(String searchText, int categoryId, String postedBy,
+			String dateCondition, LocalDate onDate, LocalDate fromDate, LocalDate toDate, String sortedBy,
+			int startIndex, int records) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Adv> getAdvByUser() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public Adv SearchAdvByText(String searchText) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Adv returnAdv(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+}

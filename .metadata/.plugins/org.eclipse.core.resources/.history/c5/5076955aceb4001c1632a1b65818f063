@@ -1,0 +1,22 @@
+package com.olx.controller;
+
+import java.awt.PageAttributes.MediaType;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.olx.dto.User;
+
+@RestController
+@RequestMapping("/olx/login")
+@CrossOrigin(origins = "*")
+
+public class LoginController {
+	@PostMapping(value = "/user/authenticate", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public String authenticate(@RequestBody User user) {
+return "A78Dt";
+	}
+}

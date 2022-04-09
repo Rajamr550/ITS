@@ -1,0 +1,38 @@
+package com.olx.service;
+
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+import com.olx.controller.LoginController;
+import com.olx.dto.User;
+
+@Service
+public class LoginServiceImpl implements LoginService {
+	@Override
+	public String authenticate(User user) {
+		return "kjf34t";
+
+	}
+
+	@Override
+	public boolean logout(String authToken) {
+		return true;
+
+	}
+	@Override
+	public User register(User user) {
+		return user;
+	}
+	
+//	@Override
+//	public List<User> getAllUser(){
+//		return List<User>;
+//	}
+
+	@Override
+	public String validateToken(String authToken) {
+		return authToken;
+	}
+
+}

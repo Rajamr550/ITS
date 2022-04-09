@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;MasterServiceImpl.java&apos; to &apos;com.olx.service.MasterService.java&apos;&#x0D;&#x0A;- Original project: &apos;OLX-MasterData&apos;&#x0D;&#x0A;- Destination element: &apos;com.olx.service.MasterService.java&apos;&#x0D;&#x0A;- Original element: &apos;com.olx.MasterServiceImpl.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.olx.service{MasterService.java" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.olx{MasterServiceImpl.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" patterns="*" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1649160113512" units="1" version="1.0"/>
+</session>
