@@ -10,16 +10,16 @@ import lombok.Data;
 
 @ApiModel(value = "Adv Dto")
 public class Adv {
-	@ApiModelProperty(value = " Ad Title ")
+    @ApiModelProperty(value = " Ad Title ")
 
-	private String title;
-	@ApiModelProperty(value = " Ad price ")
+    private String title;
+    @ApiModelProperty(value = " Ad price ")
 
-	private int price;
-	@ApiModelProperty(value = " Ad Id ")
+    private int price;
+    @ApiModelProperty(value = " Ad Id ")
 
-	private int catId;
-	@ApiModelProperty(value = " Ad Description ")
+    private int id;
+    @ApiModelProperty(value = " Ad Description ")
 
-	private String desc;
+    private String description;
 }

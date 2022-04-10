@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-//@Table(name = "stocks")
+//@Table(name = "advertisements")
 public class AdvEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
