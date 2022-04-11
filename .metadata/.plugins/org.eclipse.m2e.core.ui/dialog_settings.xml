@@ -69,6 +69,7 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\Users\RM66237\Documents\OLX\OLX-Advertise"/>
 			<item value="C:\Users\RM66237\Documents\EntityMappingSpringDataDemo"/>
 		</list>
 		<list key="projectNameTemplate">

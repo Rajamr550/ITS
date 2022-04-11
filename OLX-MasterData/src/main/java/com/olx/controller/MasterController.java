@@ -20,20 +20,20 @@ import io.swagger.annotations.ApiOperation;
 @CrossOrigin(origins = "*")
 
 public class MasterController {
-	@Autowired
-	MasterService masterService;
+    @Autowired
+    MasterService masterService;
 
-	@GetMapping(value = "/category", produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
-	@ApiOperation(value = "Reads all stocks", notes = "This REST API returns list of all stocks")
+    @GetMapping(value = "/category", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+    @ApiOperation(value = "Reads all category", notes = "This REST API returns list of all categories")
 
-	public List<Category> getAllCategory() {
-		return masterService.getAllCategory();
-	}
+    public List<Category> getAllCategory() {
+	return masterService.getAllCategory();
+    }
 
-	@ApiOperation(value = "Reads all stocks", notes = "This REST API returns list of all stocks")
+    @ApiOperation(value = "Reads all status", notes = "This REST API returns list of all status")
 
-	@GetMapping(value = "/status", produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
-	public List<Status> getAllStatus() {
-		return masterService.getAllStatus();
-	}
+    @GetMapping(value = "/status", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+    public List<Status> getAllStatus() {
+	return masterService.getAllStatus();
+    }
 }

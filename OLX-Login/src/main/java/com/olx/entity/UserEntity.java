@@ -1,6 +1,10 @@
 package com.olx.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -14,11 +18,26 @@ import lombok.NoArgsConstructor;
 @Table(name = "users")
 
 public class UserEntity {
-    private String fName;
-    private String lName;
-    private String userName;
-    private String pass;
+    @Id
+    @GeneratedValue
+    private int id;
+
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "f_name")
+    private String fName;
+
+    @Column(name = "l_name")
+    private String lName;
+
+    @Column(name = "pass")
+    private String pass;
+
+    @Column(name = "phoneNum")
     private long phoneNum;
+
+    @Column(name = "userName")
+    private String userName;
 
 }

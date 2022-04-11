@@ -5,6 +5,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -21,42 +22,44 @@ import io.swagger.annotations.ApiOperation;
 @CrossOrigin(origins = "*")
 
 public class LoginController {
-	@Autowired
-	LoginService loginService;
+    @Autowired
+    LoginService loginService;
 
-	@PostMapping(value = "/user/authenticate", consumes = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
-	@ApiOperation(value = "Reads specific stock", notes = "This REST API returns list the stock of given id")
+    @PostMapping(value = "/user/authenticate", consumes = { MediaType.APPLICATION_JSON_VALUE,
+	    MediaType.APPLICATION_XML_VALUE })
+    @ApiOperation(value = "user Auth", notes = "authenticating a user using tokens")
 
-	public String authenticate(@RequestBody User user) {
-		return loginService.authenticate(user);
-	}
+    public String authenticate(@RequestBody User user) {
+	return loginService.authenticate(user);
+    }
 
-	@DeleteMapping(value = "/user/logout")
-	@ApiOperation(value = "Reads specific stock", notes = "This REST API returns list the stock of given id")
+    @DeleteMapping(value = "/user/logout")
+    @ApiOperation(value = "logs out  a user", notes = "logs out a user session")
 
-	public boolean logout(@RequestHeader("auth-token") String authToken) {
-		return loginService.logout(authToken);
-	}
+    public boolean logout(@RequestHeader("auth-token") String authToken) {
+	return loginService.logout(authToken);
+    }
 
-	@PostMapping(value = "/user", consumes = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
-	@ApiOperation(value = "Reads specific stock", notes = "This REST API returns list the stock of given id")
+    // 3
+    @PostMapping(value = "/user", consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+    @ApiOperation(value = "create a new user", notes = "This REST api post a new user")
+    public User registerUser(@RequestBody User user) {
+	return loginService.registerUser(user);
+    }
 
-	public User registerUser(@RequestBody User user) {
-		return loginService.registerUser(user);
-	}
+    @ApiOperation(value = "getUser", notes = "return a user")
+//4
+    @GetMapping(value = "/user/{id}", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+    public User getUser(@PathVariable("id") int id) {
+	return loginService.getUser(id);
+    }
 
-	@ApiOperation(value = "Reads specific stock", notes = "This REST API returns list the stock of given id")
+    @GetMapping(value = "/token/validate", produces = { MediaType.APPLICATION_JSON_VALUE,
+	    MediaType.APPLICATION_XML_VALUE })
+    @ApiOperation(value = "token Validation", notes = " validates a token ")
 
-	@GetMapping(value = "/user", produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
-	public User getUser(User user) {
-		return loginService.getUser(user);
-	}
+    public String validateToken(String authToken) {
+	return loginService.validateToken(authToken);
 
-	@GetMapping(value = "/token/validate", produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
-	@ApiOperation(value = "Reads specific stock", notes = "This REST API returns list the stock of given id")
-
-	public String validateToken(String authToken) {
-		return loginService.validateToken(authToken);
-
-	}
+    }
 }

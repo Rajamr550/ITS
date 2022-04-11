@@ -1,3 +1,4 @@
+command=C\:\\Program Files\\Java\\jdk1.8.0_121\\bin\\javadoc.exe
 content_assist_autoactivation_triggers_java=..abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/\\,@\#$\!%^&*()
 content_assist_category_order=org.eclipse.jdt.ui.templateProposalCategory\:65535\u0000org.eclipse.jdt.ui.swtProposalCategory\:65536\u0000org.eclipse.jdt.ui.javaNoTypeProposalCategory\:65537\u0000org.eclipse.jdt.ui.javaChainProposalCategory\:65538\u0000org.eclipse.jdt.ui.javaTypeProposalCategory\:4\u0000org.eclipse.jdt.ui.textProposalCategory\:65540\u0000org.eclipse.jdt.ui.javaAllProposalCategory\:6\u0000org.eclipse.jdt.ui.javaPostfixProposalCategory\:7\u0000org.eclipse.pde.api.tools.ui.apitools_proposal_category\:65543\u0000org.eclipse.lsp4e.jdt.ls-based-java-completion-computer\:65544\u0000
 content_assist_completion_replacement_background=200,200,0

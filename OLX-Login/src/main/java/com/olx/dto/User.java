@@ -4,28 +4,32 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 
-@ApiModel(value = "Stock dto")
+@ApiModel(value = "olx user dto")
 public class User {
-	@ApiModelProperty(value = " User  first Name ")
+    @ApiModelProperty(value = " user id ")
+    private int id;
 
-	private String fName;
-	@ApiModelProperty(value = " User  last Name ")
+    @ApiModelProperty(value = " User  email id ")
+    private String email;
 
-	private String lName;
-	@ApiModelProperty(value = " User  uname ")
+    @ApiModelProperty(value = " User  first Name ")
+    private String fName;
 
-	private String userName;
-	@ApiModelProperty(value = " User  password")
+    @ApiModelProperty(value = " User  last Name ")
+    private String lName;
 
-	private String pass;
-	@ApiModelProperty(value = " User  email id ")
+    @ApiModelProperty(value = " User  password")
+    private String pass;
 
-	private String email;
-	@ApiModelProperty(value = " User  phone number ")
+    @ApiModelProperty(value = " User  phone number ")
+    private long phoneNum;
 
-	private long phoneNum;
+    @ApiModelProperty(value = " user name ")
+    private String userName;
 }

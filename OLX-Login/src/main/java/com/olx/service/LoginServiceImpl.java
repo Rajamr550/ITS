@@ -2,6 +2,7 @@ package com.olx.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeMap;
@@ -41,23 +42,19 @@ public class LoginServiceImpl implements LoginService {
     }
 
 //    @Override
-//    public User getUser(String uName) {
-//	List<UserEntity> userEntityList = userRepo.findByName
-//	List<User> userDtoList = new ArrayList<User>();
-//	for (UserEntity userEntity : userEntityList) {
-//	    User user = convertEntityIntoDTO(userEntity);
-//	    userDtoList.add(user);
-//	}
-//	return user;
+//    public List<User> getUserDetails(String authToken) {
+//	List<UserEntity> userEntity = userRepo.findAll();
+//	List<UserDetails> userDto = convertEntityListIntoDTOList(userEntity);
+//	return userDto;
 //    }
 
-  @Override
-  public User getUser(User user) {
+    // get a user
+    @Override
+    public User getUser(int id) {
+	UserEntity uEntity = userRepo.getById(id);
+	return convertEntityIntoDTO(uEntity);
 
-      user.setEmail(null);
-      user.
-	return user;
-  }
+    }
 
     @Override
     public String validateToken(String authToken) {
@@ -75,5 +72,16 @@ public class LoginServiceImpl implements LoginService {
 	User user = modelMapper.map(userEntity, User.class);
 	return user;
     }
+
+//  @Override
+//  public User getUser() {
+//	List<UserEntity> userEntityList = userRepo.findByName
+//	List<User> userDtoList = new ArrayList<User>();
+//	for (UserEntity userEntity : userEntityList) {
+//	    User user = convertEntityIntoDTO(userEntity);
+//	    userDtoList.add(user);
+//	}
+//	return user;
+//  }
 
 }

@@ -1,6 +1,7 @@
 package com.olx.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -16,6 +17,7 @@ import lombok.NoArgsConstructor;
 
 public class CategoryEntity {
     @Id
+    @GeneratedValue
     private int id;
     private String categoryName;
 }

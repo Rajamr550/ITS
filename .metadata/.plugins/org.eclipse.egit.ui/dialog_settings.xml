@@ -21,11 +21,20 @@
 	</section>
 	<section name="org.eclipse.egit.ui.internal.staging.StagingView">
 		<item key="MAIN_SASH_FORM_ORIENTATION_VERTICAL" value="false"/>
-		<item key="HORIZONTAL_SASH_FORM_WEIGHT" value="200,200"/>
-		<item key="STAGING_SASH_FORM_WEIGHT" value="200,200"/>
+		<item key="HORIZONTAL_SASH_FORM_WEIGHT" value="500,500"/>
+		<item key="STAGING_SASH_FORM_WEIGHT" value="500,500"/>
 		<item key="sortItemState" value="false"/>
 	</section>
 	<section name="GitCommitMessageComponent">
+		<list key="C:\Users\RM66237\Documents\OLX\.git">
+			<item value="false"/>
+			<item value="raja &lt;raja.m@zensar.com&gt;"/>
+			<item value="check pred"/>
+			<item value="raja &lt;raja.m@zensar.com&gt;"/>
+			<item value="c2b8317afa95253eb8e2c4668cd40b33a8d14b3c"/>
+			<item value="0"/>
+			<item value="false"/>
+		</list>
 	</section>
 	<section name="org.eclipse.egit.ui.internal.push.PushResultDialog.dialogBounds">
 		<item key="DIALOG_X_ORIGIN" value="619"/>
