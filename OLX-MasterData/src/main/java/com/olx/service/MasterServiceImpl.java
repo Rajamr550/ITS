@@ -42,7 +42,7 @@ public class MasterServiceImpl implements MasterService {
 	List<StatusEntity> statusEntityList = statusRepo.findAll();
 	List<Status> statusDtoList = new ArrayList<Status>();
 	for (StatusEntity statusEntity : statusEntityList) {
-	    Status status = convertEntityIntoDTO(statusEntity);
+	    Status status = convertEntityIntoDTO2(statusEntity);
 	    statusDtoList.add(status);
 	}
 	return statusDtoList;
@@ -60,13 +60,13 @@ public class MasterServiceImpl implements MasterService {
 	return category;
     }
 
-    private StatusEntity convertDTOIntoEntity(Status status) {
+    private StatusEntity convertDTOIntoEntity2(Status status) {
 	TypeMap<Status, StatusEntity> tMap = modelMapper.typeMap(Status.class, StatusEntity.class);
 	StatusEntity statusEntity = modelMapper.map(status, StatusEntity.class);
 	return statusEntity;
     }
 
-    private Status convertEntityIntoDTO(StatusEntity statusEntity) {
+    private Status convertEntityIntoDTO2(StatusEntity statusEntity) {
 	TypeMap<StatusEntity, Status> tMap = modelMapper.typeMap(StatusEntity.class, Status.class);
 	Status status = modelMapper.map(statusEntity, Status.class);
 	return status;

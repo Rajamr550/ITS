@@ -1,6 +1,7 @@
 package com.olx.service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -124,11 +125,18 @@ public class AdvServiceImpl implements AdvService {
     }
 
     private List<Adv> convertEntityListIntoDTOList(List<AdvEntity> advEntityList) {
-	TypeMap<AdvEntity, Adv> tMap = modelMapper.typeMap(AdvEntity.class, Adv.class);
-	List<Adv> adv = (List<Adv>) modelMapper.map(advEntityList, Adv.class);
+	List<Adv> userDtoList = new ArrayList<Adv>();
+	for (AdvEntity uAdvEntity : advEntityList) {
+	    Adv userDetailsDto = convertEntityIntoDTO(uAdvEntity);
+	    userDtoList.add(userDetailsDto);
+	}
+	return userDtoList;
 
-	return adv;
+    }
 
+    private Adv convertEntityIntoDTO(AdvEntity uAdvEntity) {
+	Adv userDetails = modelMapper.map(uAdvEntity, Adv.class);
+	return userDetails;
     }
 
 }

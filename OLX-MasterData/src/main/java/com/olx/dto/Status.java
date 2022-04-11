@@ -4,17 +4,19 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 
 @ApiModel(value = "Stock dto")
 
 public class Status {
-	@ApiModelProperty(value = " Status Id ")
+    @ApiModelProperty(value = " Status Id ")
 
-	private int id;
-	@ApiModelProperty(value = " Status Name ")
+    private int id;
+    @ApiModelProperty(value = " Status Name ")
 
-	private String statusName;
+    private String statusName;
 }
