@@ -1,7 +1,0 @@
-package com.olx.dto;
-
-@data
-public class Status {
-private int id;
-private status statusName;
-}

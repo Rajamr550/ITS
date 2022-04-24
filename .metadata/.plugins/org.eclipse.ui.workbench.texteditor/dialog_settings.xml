@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="adv"/>
+		<item key="selection" value="status"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="true"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="stock"/>
-			<item value="Stock"/>
-			<item value="zensar"/>
-			<item value="AdvertiseEntity"/>
-			<item value="AdvertiseDTO"/>
-			<item value="port"/>
-			<item value="server"/>
 			<item value="category"/>
 			<item value="Category"/>
-			<item value="tock"/>
-			<item value="com.zensar"/>
-			<item value="StockEntity"/>
-			<item value="bugFixesByVersionMap"/>
-			<item value="MasterData"/>
-			<item value="OlxMasterData"/>
+			<item value="masterDataService"/>
+			<item value="MasterDataService"/>
+			<item value="advertiseDto"/>
+			<item value="Adv"/>
+			<item value="returnAdv"/>
+			<item value="advertiseList"/>
+			<item value="advertiseService"/>
+			<item value="AdvService"/>
+			<item value="advertiseController"/>
+			<item value="Co"/>
+			<item value="advertise"/>
+			<item value="updateAdvertise"/>
+			<item value="getAllAdvByUser"/>
 		</list>
 		<list key="replacehistory">
-			<item value="adv"/>
-			<item value="Adv"/>
-			<item value="olx"/>
-			<item value="AdvEntity"/>
-			<item value="user"/>
-			<item value="User"/>
 			<item value="status"/>
 			<item value="Status"/>
+			<item value="masterService"/>
+			<item value="MasterService"/>
 			<item value="category"/>
 			<item value="Category"/>
-			<item value="com.olx"/>
-			<item value="CategoryEntity"/>
-			<item value="advStatsMap"/>
-			<item value="Advertise"/>
-			<item value="OlxLogin"/>
+			<item value=""/>
+			<item value="catList"/>
+			<item value="masterController"/>
+			<item value="9002"/>
+			<item value="Lap"/>
+			<item value="Laptop"/>
+			<item value="Blog"/>
+			<item value="Stock"/>
+			<item value="check"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

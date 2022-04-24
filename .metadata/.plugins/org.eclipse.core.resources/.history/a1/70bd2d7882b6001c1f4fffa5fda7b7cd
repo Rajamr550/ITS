@@ -1,9 +1,0 @@
-package com.zensar.repository;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.zensar.entity.StockEntity;
-
-public interface CategoryRepo extends JpaRepository<StockEntity, Integer> {
-
-}

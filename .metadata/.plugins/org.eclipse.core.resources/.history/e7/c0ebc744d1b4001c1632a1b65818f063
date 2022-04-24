@@ -1,6 +1,0 @@
-package com.olx.service;
-
-@Service
-public class LoginServiceImpl implements LoginService {
-
-}

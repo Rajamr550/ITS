@@ -1,8 +1,0 @@
-package com.olx.service;
-
-import java.util.List;
-
-public interface MasterService {
-	public List<Cateogry> getAllCategory();
-	public List<Status> getAllStatus();
-}

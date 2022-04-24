@@ -6,6 +6,8 @@
 		<item value="github.com"/>
 	</list>
 	<list key="RepositorySelectionPage.UsedUris">
+		<item value="https://github.com/Rajamr550/my-repo.git"/>
+		<item value="https://github.com/Rajamr550/OLX_Rest_API.git"/>
 		<item value="https://github.com/anand-mentor/JFS_14_Mar_2022/tree/main/Spring_Boot/shared_code/EntityMappingSpringDataDemo.git"/>
 		<item value="https://github.com/anand-mentor/JFS_14_Mar_2022/tree/main/Spring_Boot/shared_code/EntityMappingSpringDataDemo"/>
 		<item value="https://github.com/Rajamr550/stock-demo.git"/>
@@ -29,11 +31,14 @@
 		<list key="C:\Users\RM66237\Documents\OLX\.git">
 			<item value="false"/>
 			<item value="raja &lt;raja.m@zensar.com&gt;"/>
-			<item value="check pred"/>
+			<item value="# WARNING: head commit changed in the meantime&#x0D;&#x0A;&#x0D;&#x0A;check pred"/>
 			<item value="raja &lt;raja.m@zensar.com&gt;"/>
-			<item value="c2b8317afa95253eb8e2c4668cd40b33a8d14b3c"/>
+			<item value="159859c2bb00e73aec9e64445623754e04e90614"/>
 			<item value="0"/>
 			<item value="false"/>
+		</list>
+		<list key="C:\Users\RM66237\git\OLX_Rest_API\.git">
+			<item value="empty"/>
 		</list>
 	</section>
 	<section name="org.eclipse.egit.ui.internal.push.PushResultDialog.dialogBounds">

@@ -1,0 +1,14 @@
+spring:
+  application:
+   name: configuration-server
+  cloud:
+   config:
+    server:
+     git:
+      uri: https://github.com/Rajamr550/config
+      username: Rajamr550
+      clone-on-start: true
+      default-label: main
+      
+server:
+  port: 8888
