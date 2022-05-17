@@ -37,11 +37,28 @@
 
 package com.zensar.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+import com.zensar.dto.Candidate;
+import com.zensar.service.AdminServices;
 
-//changes made under Rest-Api
+@RestController
+@RequestMapping("/admin")
+@CrossOrigin(origins="*")
 public class AdminController {
 
+	@Autowired
+	AdminServices adminServices;
 	
-	
+	//1--Register a candidate
+	@PostMapping(value="/candidate", consumes= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	public Candidate registerCandidate(@RequestBody Candidate candidate) {
+		return adminServices.registerCandidate(candidate);
+	}
 }

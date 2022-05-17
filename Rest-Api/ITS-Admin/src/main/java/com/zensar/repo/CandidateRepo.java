@@ -1,5 +1,9 @@
 package com.zensar.repo;
 
-public class CandidateRepo {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.zensar.entity.CandidateEntity;
+
+public interface CandidateRepo extends JpaRepository<CandidateEntity, Integer>{
 
 }
