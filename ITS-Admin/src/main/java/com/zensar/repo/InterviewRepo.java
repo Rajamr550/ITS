@@ -1,5 +1,9 @@
 package com.zensar.repo;
 
-public class InterviewRepo {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.zensar.entity.InterviewEntity;
+
+public interface InterviewRepo extends JpaRepository<InterviewEntity, Integer> {
 
 }
