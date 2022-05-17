@@ -23,6 +23,13 @@ public interface AdminServices {
 	InterviewSchedule createInterviewSchedule(InterviewSchedule interviewScheduleDto);
 
 	boolean deleteInterviewScheduleByID(int id);
+        
+	public List<PanelMember> searchEmployee(Integer id, String name);
 
+	public List<PanelMember> getAllPanelMembers();
 
+	public boolean deleteTechMember(int id);
+
+	public boolean deleteHRMember(int id);
+	
 }
