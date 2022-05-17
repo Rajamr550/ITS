@@ -17,15 +17,15 @@ import org.modelmapper.TypeMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.zensar.dto.Candidate;
+import com.zensar.dto.InterviewSchedule;
+import com.zensar.dto.PanelMember;
 import com.zensar.entity.CandidateEntity;
-import com.zensar.entity.PanelMemberEntity;
 import com.zensar.entity.InterviewScheduleEntity;
-
+import com.zensar.entity.PanelMemberEntity;
 import com.zensar.repo.CandidateRepo;
-import com.zensar.repo.PanelMemberRepo;
 import com.zensar.repo.InterviewScheduleRepo;
-
-import com.zensar.dto.*;
+import com.zensar.repo.PanelMemberRepo;
 
 @Service
 public class AdminServiceImpl implements AdminServices {
