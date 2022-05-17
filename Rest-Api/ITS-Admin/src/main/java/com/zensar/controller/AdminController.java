@@ -37,9 +37,13 @@
 
 package com.zensar.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -61,4 +65,28 @@ public class AdminController {
 	public Candidate registerCandidate(@RequestBody Candidate candidate) {
 		return adminServices.registerCandidate(candidate);
 	}
+	
+	//2.1-- View candidate 
+	@GetMapping(value="/candidate", produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	public List<Candidate> getAllCandidates(){
+		return adminServices.getAllCandidates();
+	}
+	
+	@GetMapping(value="/candidate/{id}", produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	public Candidate getCandidateById(@PathVariable("id") int id){
+		return adminServices.getCandidateById(id);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
