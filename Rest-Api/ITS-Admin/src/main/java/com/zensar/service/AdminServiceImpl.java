@@ -4,6 +4,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
+
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeMap;
@@ -23,6 +30,8 @@ import com.zensar.dto.*;
 @Service
 public class AdminServiceImpl implements AdminServices {
 
+	@Autowired
+	EntityManager entityManager;
 	@Autowired
 	CandidateRepo candidateRepo;
 
@@ -157,46 +166,74 @@ public class AdminServiceImpl implements AdminServices {
 		}
 		return false;
 	}
-	
+
 	public List<PanelMember> getAllPanelMembers() {
 		List<PanelMemberEntity> panelMemberEntity = panelMemberRepo.findAll();
-		List<PanelMember> panelMember =new ArrayList<PanelMember>();
+		List<PanelMember> panelMember = new ArrayList<PanelMember>();
 		Iterator<PanelMemberEntity> itrPanelEntities = panelMemberEntity.iterator();
-		while(itrPanelEntities.hasNext())
-		{
+		while (itrPanelEntities.hasNext()) {
 			PanelMember panels = convertEntityIntoDTO(itrPanelEntities.next());
 			panelMember.add(panels);
 		}
-		
-		
+
 		return panelMember;
 	}
-@Override
+
+	@Override
 	public boolean deleteTechMember(int id) {
-		 
-			if(panelMemberRepo.existsById(id)) {
-				if(panelMemberRepo.getById(id).getType().equalsIgnoreCase("Tech")) {
-					panelMemberRepo.deleteById(id);
+
+		if (panelMemberRepo.existsById(id)) {
+			if (panelMemberRepo.getById(id).getType().equalsIgnoreCase("Tech")) {
+				panelMemberRepo.deleteById(id);
 				return true;
 			}
-				return false;
-			}
 			return false;
+		}
+		return false;
 	}
 
 	@Override
 	public boolean deleteHRMember(int id) {
-		
-		if(panelMemberRepo.existsById(id)) {
-			if(panelMemberRepo.getById(id).getType().equalsIgnoreCase("HR")) {
+
+		if (panelMemberRepo.existsById(id)) {
+			if (panelMemberRepo.getById(id).getType().equalsIgnoreCase("HR")) {
 				panelMemberRepo.deleteById(id);
-			return true;
+				return true;
+			}
+			return false;
 		}
-		return false;
-}
 		return false;
 	}
 
-	
-}
+	@Override
+	public List<PanelMember> searchEmployee(Integer id, String name) {
+		CriteriaBuilder critertiaBuilder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<PanelMemberEntity> criteriaQuery = critertiaBuilder.createQuery(PanelMemberEntity.class);
+		Root<PanelMemberEntity> rootEntity = criteriaQuery.from(PanelMemberEntity.class);
 
+		Predicate predicateId = critertiaBuilder.and();
+		Predicate predicateName = critertiaBuilder.and();
+		Predicate predicateFinal = critertiaBuilder.and();
+
+		if (name != null && !"".equalsIgnoreCase(name)) {
+			predicateName = critertiaBuilder.like(rootEntity.get("name"), "%" + name + "%");
+
+		}
+		if (id != null) {
+			predicateId = critertiaBuilder.equal(rootEntity.get("employeeId"), id);
+		}
+
+		predicateFinal = critertiaBuilder.and(predicateId, predicateName);
+		criteriaQuery.where(predicateFinal);
+
+		TypedQuery<PanelMemberEntity> typedQuery = entityManager.createQuery(criteriaQuery);
+		List<PanelMemberEntity> panelEntityList = typedQuery.getResultList();
+		// write a convert and return advertise list here
+		List<PanelMember> panelList = new ArrayList<>();
+		for (PanelMemberEntity p : panelEntityList)
+			panelList.add(convertEntityIntoDTO(p));
+
+		return panelList;
+	}
+
+}

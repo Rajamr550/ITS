@@ -23,12 +23,22 @@ public interface AdminServices {
 	InterviewSchedule createInterviewSchedule(InterviewSchedule interviewScheduleDto);
 
 	boolean deleteInterviewScheduleByID(int id);
+        
+	public List<PanelMember> searchEmployee(Integer id, String name);
 
-	boolean deleteHRMember(int id);
-
-	boolean deleteTechMember(int id);
-
-	public List<PanelMember> getAllPanelMembers();
-
-
+//<<<<<<< HEAD
+//	boolean deleteHRMember(int id);
+//
+//	boolean deleteTechMember(int id);
+//
+//	public List<PanelMember> getAllPanelMembers();
+//
+//=======
+//	public List<PanelMember> getAllPanelMembers();
+//>>>>>>> branch 'main' of https://github.com/Rajamr550/ITS.git
+//
+//	public boolean deleteTechMember(int id);
+//
+//	public boolean deleteHRMember(int id);
+	
 }
