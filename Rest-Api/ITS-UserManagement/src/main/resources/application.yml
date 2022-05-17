@@ -1,11 +1,11 @@
 server:
-  port: 7003
+  port: 8003
 
 spring:
   application:
-    name: AUTH-SERVICE
+    name: USER-SERVICE
   datasource:
-    url: jdbc:mysql://localhost:3306/userdb
+    url: jdbc:mysql://localhost:3306/its-userdb
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: root

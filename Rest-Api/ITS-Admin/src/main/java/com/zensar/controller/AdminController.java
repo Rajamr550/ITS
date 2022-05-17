@@ -129,7 +129,7 @@ public class AdminController {
 	//9.1
       	@DeleteMapping(value = "/panel/tech/{id}")
       	public boolean deleteTechMember(@PathVariable("id") int id) {
-      		return adminServices.deleteTechMember(id);
+      		return adminServices.deleteHRMember(id);
       	}
       	//9.2
       	@DeleteMapping(value = "/panel/hr/{id}")

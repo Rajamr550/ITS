@@ -26,6 +26,12 @@ public interface AdminServices {
         
 	public List<PanelMember> searchEmployee(Integer id, String name);
 
+	public boolean deleteHRMember(int id);
+
+	public List<PanelMember> getAllPanelMembers();
+
+	boolean deleteTechMember(int id);
+
 //<<<<<<< HEAD
 //	boolean deleteHRMember(int id);
 //
