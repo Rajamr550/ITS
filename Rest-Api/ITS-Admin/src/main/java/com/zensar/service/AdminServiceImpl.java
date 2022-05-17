@@ -195,6 +195,37 @@ public class AdminServiceImpl implements AdminServices {
 }
 		return false;
 	}
+	
+	@Override
+	public List<PanelMember> searchEmployee(Integer id, String name) {
+	CriteriaBuilder critertiaBuilder=entityManager.getCriteriaBuilder();
+	CriteriaQuery<PanelMemberEntity> criteriaQuery=critertiaBuilder.createQuery(PanelMemberEntity.class);
+	Root<PanelMemberEntity> rootEntity=criteriaQuery.from(PanelMemberEntity.class);
+
+	Predicate predicateId= critertiaBuilder.and();
+	Predicate predicateName= critertiaBuilder.and();
+	Predicate predicateFinal = critertiaBuilder.and();
+
+	if(name!=null && !"".equalsIgnoreCase(name)) {
+	predicateName=critertiaBuilder.like(rootEntity.get("name"),"%"+name+"%");
+
+	}
+	if(id!=null) {
+	predicateId=critertiaBuilder.equal(rootEntity.get("employeeId"),id);
+	}
+
+	predicateFinal=critertiaBuilder.and(predicateId,predicateName);
+	criteriaQuery.where(predicateFinal);
+
+	TypedQuery<PanelMemberEntity> typedQuery = entityManager.createQuery(criteriaQuery);
+	List<PanelMemberEntity> panelEntityList=typedQuery.getResultList();
+	//write a convert and return advertise list here
+	List<PanelMember> panelList=new ArrayList<>();
+	for(PanelMemberEntity p:panelEntityList)
+	panelList.add(convertEntityIntoDTO(p));
+
+	return panelList;
+	}
 
 	
 }
