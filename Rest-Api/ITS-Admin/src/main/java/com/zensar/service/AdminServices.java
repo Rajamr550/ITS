@@ -24,5 +24,11 @@ public interface AdminServices {
 
 	boolean deleteInterviewScheduleByID(int id);
 
+	boolean deleteHRMember(int id);
+
+	boolean deleteTechMember(int id);
+
+	public List<PanelMember> getAllPanelMembers();
+
 
 }
