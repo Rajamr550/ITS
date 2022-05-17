@@ -1,17 +1,9 @@
-package com.zensar.entity;
+package com.zensar.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+//entering a new messsage
+public class Candidate {
 
-
-@Entity
-@Table(name="CandidateDetails")
-public class CandidateEntity {
-
-	@Id
-	@GeneratedValue
+	
 	private int candidateId;
 	private String candidateName;
 	private String primarySkills;
@@ -22,12 +14,12 @@ public class CandidateEntity {
 	private int noticePeriod;
 	private String location;
 	
-	public CandidateEntity() {
+	public Candidate() {
 		super();
 		
 	}
 
-	public CandidateEntity(int candidateId, String candidateName, String primarySkills, String secondarySkills,
+	public Candidate(int candidateId, String candidateName, String primarySkills, String secondarySkills,
 			int experience, String qualification, String designation, int noticePeriod, String location) {
 		super();
 		this.candidateId = candidateId;
@@ -120,8 +112,5 @@ public class CandidateEntity {
 				+ ", qualification=" + qualification + ", designation=" + designation + ", noticePeriod=" + noticePeriod
 				+ ", location=" + location + "]";
 	}
-	
-	
-	
 	
 }
