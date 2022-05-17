@@ -156,4 +156,46 @@ public class AdminServiceImpl implements AdminServices {
 		}
 		return false;
 	}
+	
+	public List<PanelMember> getAllPanelMembers() {
+		List<PanelMemberEntity> panelMemberEntity = panelMemberRepo.findAll();
+		List<PanelMember> panelMember =new ArrayList<PanelMember>();
+		Iterator<PanelMemberEntity> itrPanelEntities = panelMemberEntity.iterator();
+		while(itrPanelEntities.hasNext())
+		{
+			PanelMember panels = convertEntityIntoDTO(itrPanelEntities.next());
+			panelMember.add(panels);
+		}
+		
+		
+		return panelMember;
+	}
+@Override
+	public boolean deleteTechMember(int id) {
+		 
+			if(panelMemberRepo.existsById(id)) {
+				if(panelMemberRepo.getById(id).getType().equalsIgnoreCase("Tech")) {
+					panelMemberRepo.deleteById(id);
+				return true;
+			}
+				return false;
+			}
+			return false;
+	}
+
+	@Override
+	public boolean deleteHRMember(int id) {
+		
+		if(panelMemberRepo.existsById(id)) {
+			if(panelMemberRepo.getById(id).getType().equalsIgnoreCase("HR")) {
+				panelMemberRepo.deleteById(id);
+			return true;
+		}
+		return false;
 }
+		return false;
+	}
+
+	
+}
+
