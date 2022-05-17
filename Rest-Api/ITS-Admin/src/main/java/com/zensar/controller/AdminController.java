@@ -118,6 +118,13 @@ public class AdminController {
     	return adminServices.deleteInterviewScheduleByID(id);
         }
 	
+	      //8
+      		@GetMapping(value="/panel/search",consumes= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+      		public List<PanelMember>searchEmployee(@RequestParam(name="id",required=false)Integer id,
+      				@RequestParam(name="name",required=false)String name){
+      			return adminServices.searchEmployee(id,name);
+      		}
+	
 	//9.1
       	@DeleteMapping(value = "/panel/tech/{id}")
       	public boolean deleteTechMember(@PathVariable("id") int id) {
