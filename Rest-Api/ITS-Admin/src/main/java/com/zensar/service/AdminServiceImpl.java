@@ -10,8 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.zensar.dto.Candidate;
+import com.zensar.dto.PanelMember;
 import com.zensar.entity.CandidateEntity;
+import com.zensar.entity.PanelMemberEntity;
 import com.zensar.repo.CandidateRepo;
+import com.zensar.repo.PanelMemberRepo;
 
 @Service
 public class AdminServiceImpl implements AdminServices{
@@ -19,6 +22,9 @@ public class AdminServiceImpl implements AdminServices{
 	
 	@Autowired
 	CandidateRepo candidateRepo;
+	
+	@Autowired
+	PanelMemberRepo panelMemberRepo;
 	
 	@Autowired
 	ModelMapper modelMapper;
@@ -68,5 +74,25 @@ public class AdminServiceImpl implements AdminServices{
 		return convertEntityintoDTO(candidateEntity);
 		}
 		return null;
+	}
+
+	@Override
+	public PanelMember addPanelMember(PanelMember panelMember) {
+		PanelMemberEntity panelMemberEntity = convertDTOIntoEntity(panelMember);
+		panelMemberEntity = panelMemberRepo.save(panelMemberEntity);
+
+		return convertEntityIntoDTO(panelMemberEntity);
+	}
+	
+	private PanelMember convertEntityIntoDTO(PanelMemberEntity panelMemberEntity) {
+
+		PanelMember panelMember = modelMapper.map(panelMemberEntity, PanelMember.class);
+		return panelMember;
+	}
+
+	private PanelMemberEntity convertDTOIntoEntity(PanelMember panelMember) {
+
+		PanelMemberEntity panelMemberEntity = modelMapper.map(panelMember, PanelMemberEntity.class);
+		return panelMemberEntity;
 	}
 }

@@ -50,6 +50,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.zensar.dto.Candidate;
+import com.zensar.dto.PanelMember;
 import com.zensar.service.AdminServices;
 
 @RestController
@@ -66,18 +67,23 @@ public class AdminController {
 		return adminServices.registerCandidate(candidate);
 	}
 	
-	//2.1-- View candidate 
+	//2.1-- View All Candidate 
 	@GetMapping(value="/candidate", produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 	public List<Candidate> getAllCandidates(){
 		return adminServices.getAllCandidates();
 	}
 	
+	//2.2 -- View a candidate By Id
 	@GetMapping(value="/candidate/{id}", produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 	public Candidate getCandidateById(@PathVariable("id") int id){
 		return adminServices.getCandidateById(id);
 	}
 	
-	
+	//7 -- Adding Panel Members
+	@PostMapping(value="/panel", consumes= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	public PanelMember addPanelMember(@RequestBody PanelMember panelMember) {
+		return adminServices.addPanelMember(panelMember);
+	}
 	
 	
 	
