@@ -1,6 +1,6 @@
 server:
-  port: 8004
-  
+  port: 8111
+#8004
 management:
  endpoints:
   web:
