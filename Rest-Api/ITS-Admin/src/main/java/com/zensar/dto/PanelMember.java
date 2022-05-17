@@ -1,19 +1,19 @@
 package com.zensar.dto;
 
-public class PanelMemberDto {
+public class PanelMember {
 
 	private Integer employeeId;
 	private String name;
 	private String type;
 	private String location;
-	public PanelMemberDto(Integer employeeId, String name, String type, String location) {
+	public PanelMember(Integer employeeId, String name, String type, String location) {
 		super();
 		this.employeeId = employeeId;
 		this.name = name;
 		this.type = type;
 		this.location = location;
 	}
-	public PanelMemberDto() {
+	public PanelMember() {
 		super();
 
 	}

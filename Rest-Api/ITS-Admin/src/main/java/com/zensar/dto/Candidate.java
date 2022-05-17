@@ -1,7 +1,7 @@
 package com.zensar.dto;
 
 //entering a new messsage
-public class CandidateDto {
+public class Candidate {
 
 	
 	private int candidateId;
@@ -14,12 +14,12 @@ public class CandidateDto {
 	private int noticePeriod;
 	private String location;
 	
-	public CandidateDto() {
+	public Candidate() {
 		super();
 		
 	}
 
-	public CandidateDto(int candidateId, String candidateName, String primarySkills, String secondarySkills,
+	public Candidate(int candidateId, String candidateName, String primarySkills, String secondarySkills,
 			int experience, String qualification, String designation, int noticePeriod, String location) {
 		super();
 		this.candidateId = candidateId;

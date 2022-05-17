@@ -2,7 +2,7 @@ package com.zensar.dto;
 
 import java.time.LocalDate;
 
-public class InterviewScheduleDto {
+public class InterviewSchedule {
 
 	private int interviewId;
 	private int candidateId;
@@ -10,7 +10,7 @@ public class InterviewScheduleDto {
 	private int hrRating;
 	private String finalStatus;
 	private LocalDate interviewDate;
-	public InterviewScheduleDto(int interviewId, int candidateId, int techRating, int hrRating, String finalStatus,
+	public InterviewSchedule(int interviewId, int candidateId, int techRating, int hrRating, String finalStatus,
 			LocalDate interviewDate) {
 		super();
 		this.interviewId = interviewId;
@@ -20,7 +20,7 @@ public class InterviewScheduleDto {
 		this.finalStatus = finalStatus;
 		this.interviewDate = interviewDate;
 	}
-	public InterviewScheduleDto() {
+	public InterviewSchedule() {
 		super();
 		
 	}
