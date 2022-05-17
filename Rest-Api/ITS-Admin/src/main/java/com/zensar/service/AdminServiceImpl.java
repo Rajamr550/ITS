@@ -13,35 +13,31 @@ import com.zensar.entity.CandidateEntity;
 import com.zensar.entity.PanelMemberEntity;
 import com.zensar.entity.InterviewScheduleEntity;
 
-
-
 import com.zensar.repo.CandidateRepo;
 import com.zensar.repo.PanelMemberRepo;
 import com.zensar.repo.InterviewScheduleRepo;
 
 import com.zensar.dto.*;
 
-
-
 @Service
-public class AdminServiceImpl implements AdminServices{
+public class AdminServiceImpl implements AdminServices {
 
-	
 	@Autowired
 	CandidateRepo candidateRepo;
-	
+
 	@Autowired
 	PanelMemberRepo panelMemberRepo;
-	
+
 	@Autowired
 	InterviewScheduleRepo interviewScheduleRepo;
-	
+
 	@Autowired
 	ModelMapper modelMapper;
-	
 
-	
-	//utils - methods
+	@Autowired
+	PanelServiceDelegate panelServiceDelegate;
+
+	// utils - methods
 	private Candidate convertEntityintoDTOForCandidate(CandidateEntity candidateEntity) {
 
 		Candidate candidate = modelMapper.map(candidateEntity, Candidate.class);
@@ -53,20 +49,24 @@ public class AdminServiceImpl implements AdminServices{
 		CandidateEntity candidateEntity = modelMapper.map(candidate, CandidateEntity.class);
 		return candidateEntity;
 	}
-	
-    // utils
-    private InterviewScheduleEntity convertDTOIntoEntityForInterviewSchedule(InterviewSchedule interviewScheduleDto) {
-	TypeMap<InterviewSchedule, InterviewScheduleEntity> tMap = modelMapper.typeMap(InterviewSchedule.class, InterviewScheduleEntity.class);
-	InterviewScheduleEntity interviewScheduleEntity = modelMapper.map(interviewScheduleDto, InterviewScheduleEntity.class);
-	return interviewScheduleEntity;
-    }
 
-    private InterviewSchedule convertEntityIntoDTOForInterviewScheduleSchedule(InterviewScheduleEntity interviewScheduleEntity) {
-	TypeMap<InterviewScheduleEntity, InterviewSchedule> tMap = modelMapper.typeMap(InterviewScheduleEntity.class, InterviewSchedule.class);
-	InterviewSchedule interviewScheduleDto = modelMapper.map(interviewScheduleEntity, InterviewSchedule.class);
-	return interviewScheduleDto;
-    }
-	
+	// utils
+	private InterviewScheduleEntity convertDTOIntoEntityForInterviewSchedule(InterviewSchedule interviewScheduleDto) {
+		TypeMap<InterviewSchedule, InterviewScheduleEntity> tMap = modelMapper.typeMap(InterviewSchedule.class,
+				InterviewScheduleEntity.class);
+		InterviewScheduleEntity interviewScheduleEntity = modelMapper.map(interviewScheduleDto,
+				InterviewScheduleEntity.class);
+		return interviewScheduleEntity;
+	}
+
+	private InterviewSchedule convertEntityIntoDTOForInterviewScheduleSchedule(
+			InterviewScheduleEntity interviewScheduleEntity) {
+		TypeMap<InterviewScheduleEntity, InterviewSchedule> tMap = modelMapper.typeMap(InterviewScheduleEntity.class,
+				InterviewSchedule.class);
+		InterviewSchedule interviewScheduleDto = modelMapper.map(interviewScheduleEntity, InterviewSchedule.class);
+		return interviewScheduleDto;
+	}
+
 	@Override
 	public Candidate registerCandidate(Candidate candidate) {
 		CandidateEntity candidateEntity = convertDTOintoEntityForCandidate(candidate);
@@ -75,30 +75,27 @@ public class AdminServiceImpl implements AdminServices{
 		return convertEntityintoDTOForCandidate(candidateEntity);
 	}
 
-
-
-	
-	//logic
+	// logic
 	@Override
 	public List<Candidate> getAllCandidates() {
-		
-		List<CandidateEntity> candidateEntityList =candidateRepo.findAll();
-		List<Candidate> candidateDtoList=new ArrayList<Candidate>();
-		for(CandidateEntity candidateEntity : candidateEntityList) {
-			
-			Candidate candidate=convertEntityintoDTOForCandidate(candidateEntity);
+
+		List<CandidateEntity> candidateEntityList = candidateRepo.findAll();
+		List<Candidate> candidateDtoList = new ArrayList<Candidate>();
+		for (CandidateEntity candidateEntity : candidateEntityList) {
+
+			Candidate candidate = convertEntityintoDTOForCandidate(candidateEntity);
 			candidateDtoList.add(candidate);
 		}
-		return  candidateDtoList;
+		return candidateDtoList;
 	}
 
 	@Override
 	public Candidate getCandidateById(int id) {
-		
+
 		Optional<CandidateEntity> opCandidateEntity = candidateRepo.findById(id);
-		if(opCandidateEntity.isPresent()) {
-		CandidateEntity candidateEntity=opCandidateEntity.get();
-		return convertEntityintoDTOForCandidate(candidateEntity);
+		if (opCandidateEntity.isPresent()) {
+			CandidateEntity candidateEntity = opCandidateEntity.get();
+			return convertEntityintoDTOForCandidate(candidateEntity);
 		}
 		return null;
 	}
@@ -110,7 +107,7 @@ public class AdminServiceImpl implements AdminServices{
 
 		return convertEntityIntoDTO(panelMemberEntity);
 	}
-	
+
 	private PanelMember convertEntityIntoDTO(PanelMemberEntity panelMemberEntity) {
 
 		PanelMember panelMember = modelMapper.map(panelMemberEntity, PanelMember.class);
@@ -123,34 +120,40 @@ public class AdminServiceImpl implements AdminServices{
 		return panelMemberEntity;
 	}
 
-    @Override
-    public String shareCandidateWithTech(int interviewScheduleId) {
+	// change method name
+	@Override
+	public String shareCandidateWithTech(int interviewScheduleId) {
 
-	InterviewScheduleEntity interviewScheduleEntity2 = (InterviewScheduleEntity) interviewScheduleRepo.getById(interviewScheduleId);
-	if (interviewScheduleEntity2 != null) {
-	    int candidateId = interviewScheduleEntity2.getCandidateId();
-	    CandidateEntity candidateEntity2 = candidateRepo.getById(candidateId);
+		InterviewScheduleEntity interviewScheduleEntity2 = interviewScheduleRepo.getById(interviewScheduleId);
 
-	    if (candidateEntity2 != null) {
+		int candidateId = interviewScheduleEntity2.getCandidateId();
+		CandidateEntity candidateEntity2 = candidateRepo.getById(candidateId);
 
-	    }
+		if (candidateEntity2 != null && interviewScheduleEntity2 != null) {
+			// delegate
+			panelServiceDelegate.shareCandidateWithPanel(convertEntityintoDTOForCandidate(candidateEntity2));
+
+			panelServiceDelegate
+					.shareScheduleWithPanel(convertEntityIntoDTOForInterviewScheduleSchedule(interviewScheduleEntity2));
+			return "data shared successfully";
+
+		}
+		return "data shared failed";
 	}
-	return null;
-    }
 
-    @Override
-    public InterviewSchedule createInterviewSchedule(InterviewSchedule interviewScheduleDto) {
+	@Override
+	public InterviewSchedule createInterviewSchedule(InterviewSchedule interviewScheduleDto) {
 
-	interviewScheduleRepo.save(convertDTOIntoEntityForInterviewSchedule(interviewScheduleDto));
-	return interviewScheduleDto;
-    }
-
-    @Override
-    public boolean deleteInterviewScheduleByID(int id) {
-	if (interviewScheduleRepo.existsById(id)) {
-	    interviewScheduleRepo.deleteById(id);
-	    return true;
+		interviewScheduleRepo.save(convertDTOIntoEntityForInterviewSchedule(interviewScheduleDto));
+		return interviewScheduleDto;
 	}
-	return false;
-    }
+
+	@Override
+	public boolean deleteInterviewScheduleByID(int id) {
+		if (interviewScheduleRepo.existsById(id)) {
+			interviewScheduleRepo.deleteById(id);
+			return true;
+		}
+		return false;
+	}
 }
