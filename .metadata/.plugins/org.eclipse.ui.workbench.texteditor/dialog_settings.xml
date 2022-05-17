@@ -1,50 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="status"/>
+		<item key="selection" value="initState"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="true"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="category"/>
-			<item value="Category"/>
-			<item value="masterDataService"/>
-			<item value="MasterDataService"/>
-			<item value="advertiseDto"/>
-			<item value="Adv"/>
-			<item value="returnAdv"/>
-			<item value="advertiseList"/>
-			<item value="advertiseService"/>
-			<item value="AdvService"/>
-			<item value="advertiseController"/>
-			<item value="Co"/>
-			<item value="advertise"/>
-			<item value="updateAdvertise"/>
-			<item value="getAllAdvByUser"/>
+			<item value="RemovesBooksAction"/>
+			<item value="initialState"/>
+			<item value="updated_prods"/>
+			<item value="products"/>
+			<item value="//(.?+)+"/>
+			<item value="Akshay"/>
+			<item value="//"/>
+			<item value="abhishek"/>
+			<item value="http://localhost:9000/olx-login/"/>
+			<item value="ak"/>
+			<item value="akshay"/>
+			<item value="akshay123"/>
+			<item value="akshaygolkonda"/>
+			<item value="abhishek123"/>
+			<item value="abhishekgolkonda"/>
 		</list>
 		<list key="replacehistory">
+			<item value="delete"/>
+			<item value="initState"/>
+			<item value="newProds"/>
+			<item value="prods"/>
+			<item value=""/>
+			<item value="raja"/>
+			<item value="http://localhost:9009/olx/login/"/>
+			<item value="KKKRRR"/>
+			<item value="adv"/>
 			<item value="status"/>
 			<item value="Status"/>
 			<item value="masterService"/>
 			<item value="MasterService"/>
 			<item value="category"/>
 			<item value="Category"/>
-			<item value=""/>
-			<item value="catList"/>
-			<item value="masterController"/>
-			<item value="9002"/>
-			<item value="Lap"/>
-			<item value="Laptop"/>
-			<item value="Blog"/>
-			<item value="Stock"/>
-			<item value="check"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="501"/>
-		<item key="DIALOG_Y_ORIGIN" value="213"/>
+		<item key="DIALOG_X_ORIGIN" value="411"/>
+		<item key="DIALOG_Y_ORIGIN" value="283"/>
 		<item key="DIALOG_WIDTH" value="414"/>
 		<item key="DIALOG_HEIGHT" value="454"/>
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>

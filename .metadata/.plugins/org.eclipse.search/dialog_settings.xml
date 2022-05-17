@@ -23,12 +23,12 @@
 		<item key="WHOLE_WORD" value="false"/>
 		<item key="SEARCH_DERIVED" value="false"/>
 		<item key="SEARCH_IN_BINARIES" value="false"/>
-		<item key="HISTORY_SIZE" value="4"/>
+		<item key="HISTORY_SIZE" value="5"/>
 		<section name="HISTORY0">
 			<item key="ignoreCase" value="false"/>
-			<item key="isRegExSearch" value="false"/>
+			<item key="isRegExSearch" value="true"/>
 			<item key="isWholeWord" value="false"/>
-			<item key="textPattern" value="loginServiceImpl"/>
+			<item key="textPattern" value="//(.?+)+"/>
 			<item key="scope" value="0"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -40,10 +40,10 @@
 			<item key="0" value="*"/>
 		</section>
 		<section name="HISTORY1">
-			<item key="ignoreCase" value="true"/>
+			<item key="ignoreCase" value="false"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
-			<item key="textPattern" value="stockdb"/>
+			<item key="textPattern" value="loginServiceImpl"/>
 			<item key="scope" value="0"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -55,7 +55,7 @@
 			<item key="ignoreCase" value="true"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
-			<item key="textPattern" value="dependencies"/>
+			<item key="textPattern" value="stockdb"/>
 			<item key="scope" value="0"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -64,6 +64,18 @@
 			</list>
 		</section>
 		<section name="HISTORY3">
+			<item key="ignoreCase" value="true"/>
+			<item key="isRegExSearch" value="false"/>
+			<item key="isWholeWord" value="false"/>
+			<item key="textPattern" value="dependencies"/>
+			<item key="scope" value="0"/>
+			<list key="fileNamePatterns">
+				<item value="*"/>
+			</list>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY4">
 			<item key="ignoreCase" value="true"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
@@ -82,9 +94,9 @@
 	<section name="DialogBounds_SearchDialog">
 		<item key="DIALOG_X_ORIGIN" value="389"/>
 		<item key="DIALOG_Y_ORIGIN" value="160"/>
-		<item key="DIALOG_WIDTH" value="502"/>
-		<item key="DIALOG_HEIGHT" value="459"/>
-		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+		<item key="DIALOG_WIDTH" value="645"/>
+		<item key="DIALOG_HEIGHT" value="550"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|5|0|Segoe UI"/>
 	</section>
 	<section name="">
 		<item key="org.eclipse.search.resultpage.limit" value="1000"/>
@@ -100,5 +112,8 @@
 		<list key="replace_with">
 			<item value="any"/>
 		</list>
+	</section>
+	<section name="">
+		<item key="org.eclipse.search.resultpage.limit" value="1000"/>
 	</section>
 </section>

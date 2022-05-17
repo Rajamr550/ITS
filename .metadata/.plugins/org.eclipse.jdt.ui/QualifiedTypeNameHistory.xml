@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.security.Principal"/>
-    <fullyQualifiedTypeName name="org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest"/>
-    <fullyQualifiedTypeName name="org.springframework.test.web.servlet.MockMvc"/>
     <fullyQualifiedTypeName name="com.olx.controller.AdvController"/>
     <fullyQualifiedTypeName name="org.springframework.boot.test.mock.mockito.MockBean"/>
     <fullyQualifiedTypeName name="com.olx.service.AdvService"/>
@@ -38,7 +35,6 @@
     <fullyQualifiedTypeName name="lombok.val"/>
     <fullyQualifiedTypeName name="lombok.Value"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Value"/>
-    <fullyQualifiedTypeName name="org.springframework.context.annotation.Bean"/>
     <fullyQualifiedTypeName name="org.springframework.context.annotation.Profile"/>
     <fullyQualifiedTypeName name="com.zensar.dto.DBConfig"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
@@ -60,4 +56,8 @@
     <fullyQualifiedTypeName name="com.olx.exception.InvalidAuthTokenException"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestHeader"/>
     <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="org.springframework.http.client.ClientHttpRequestFactory"/>
+    <fullyQualifiedTypeName name="org.springframework.http.client.HttpComponentsClientHttpRequestFactory"/>
+    <fullyQualifiedTypeName name="org.apache.http.impl.client.HttpClients"/>
+    <fullyQualifiedTypeName name="org.springframework.context.annotation.Bean"/>
 </qualifiedTypeNameHistroy>

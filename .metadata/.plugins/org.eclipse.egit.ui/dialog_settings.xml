@@ -29,13 +29,7 @@
 	</section>
 	<section name="GitCommitMessageComponent">
 		<list key="C:\Users\RM66237\Documents\OLX\.git">
-			<item value="false"/>
-			<item value="raja &lt;raja.m@zensar.com&gt;"/>
-			<item value="# WARNING: head commit changed in the meantime&#x0D;&#x0A;&#x0D;&#x0A;check pred"/>
-			<item value="raja &lt;raja.m@zensar.com&gt;"/>
-			<item value="159859c2bb00e73aec9e64445623754e04e90614"/>
-			<item value="0"/>
-			<item value="false"/>
+			<item value="empty"/>
 		</list>
 		<list key="C:\Users\RM66237\git\OLX_Rest_API\.git">
 			<item value="empty"/>
@@ -46,7 +40,7 @@
 		<item key="DIALOG_Y_ORIGIN" value="204"/>
 		<item key="DIALOG_WIDTH" value="700"/>
 		<item key="DIALOG_HEIGHT" value="481"/>
-		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|5|0|Segoe UI"/>
 		<list key="sashWeights">
 			<item value="600"/>
 			<item value="400"/>

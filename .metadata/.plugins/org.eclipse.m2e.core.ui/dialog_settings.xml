@@ -6,6 +6,7 @@
 	</section>
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="C:\Users\RM66237\Downloads\ProductAppWithDB"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -69,6 +70,11 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\Users\RM66237\Documents\AAAAaaa\ProductApp"/>
+			<item value="C:\Users\RM66237\Documents\product-app\Product"/>
+			<item value="C:\Users\RM66237\Downloads\ProductCatalogApp"/>
+			<item value="C:\Users\RM66237\Downloads\ProductAppWithDB"/>
+			<item value="C:\Users\RM66237\Downloads\ProductApp"/>
 			<item value="C:\Users\RM66237\Documents\MiscDemo"/>
 			<item value="C:\Users\RM66237\Documents\OLX\OLX-Advertise"/>
 			<item value="C:\Users\RM66237\Documents\EntityMappingSpringDataDemo"/>
@@ -81,5 +87,23 @@
 			<item value="[groupId].[artifactId]-[version]"/>
 			<item value="[name]"/>
 		</list>
+	</section>
+	<section name="MavenCheckoutLocationPage">
+		<list key="scmUrl">
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.ui.internal.dialogs.MavenRepositorySearchDialog">
+		<item key="width" value="480"/>
+		<item key="height" value="667"/>
+		<item key="x" value="720"/>
+		<item key="y" value="71"/>
 	</section>
 </section>
