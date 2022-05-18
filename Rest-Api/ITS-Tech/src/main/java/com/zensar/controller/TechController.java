@@ -1,19 +1,3 @@
-/*
- * 1.view intevriew members - GET[doubt.............
- * 	CandidateDelegateService
- * 		-call the admin url = [
- * 
- * 
- * 2.view a candidate --- . call back to admin url
- * 
- * 3.give rating
- * 
- * 4.surrender
- * 
- * 
- * 
- */
-
 package com.zensar.controller;
 
 import java.util.List;
@@ -27,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -43,30 +28,30 @@ public class TechController {
 	TechService techService;
 
 	@GetMapping(value = "/candidate", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public List<Candidate> viewInterviewCandidates() {
-      return techService.viewInterviewCandidates();
+	public List<Candidate> viewInterviewCandidates(@RequestHeader("Authorization") String authToken) {
+      return techService.viewInterviewCandidates(authToken);
 	}
 
 	@PutMapping(value = "/interview/{id}", consumes = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE,
 					MediaType.APPLICATION_XML_VALUE })
 	public Interview giveTechRating(@PathVariable("id") int id,
-			@RequestBody Interview interview) {
-		return techService.giveTechRating(id, interview);
+			@RequestBody Interview interview, @RequestHeader("Authorization") String authToken) {
+		return techService.giveTechRating(id, interview, authToken);
 		
 	}
 
 	@GetMapping(value = "/candidate/{id}", produces = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE })
-	public Candidate getCandidateById(@PathVariable("id") int id) {
-		return techService.getCandidateById(id);
+	public Candidate getCandidateById(@PathVariable("id") int id, @RequestHeader("Authorization") String authToken) {
+		return techService.getCandidateById(id, authToken);
 
 	}
 
 
 	@DeleteMapping(value = "/tech/{id}")
-	public boolean resignTechPanelMember(@PathVariable("id") int id) {
-		return techService.resignTechPanelMember(id);
+	public boolean resignTechPanelMember(@PathVariable("id")  int id, @RequestHeader("Authorization") String authToken) {
+		return techService.resignTechPanelMember(id, authToken);
 		
 	}
 

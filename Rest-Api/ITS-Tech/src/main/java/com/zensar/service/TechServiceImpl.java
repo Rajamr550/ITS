@@ -24,9 +24,13 @@ public class TechServiceImpl implements TechService{
 	CandidateRepo candidateRepo;
 	@Autowired
 	InterviewRepo interviewRepo;
+	@Autowired
+	AdminServiceDelegate adminServiceDelgate;
+	@Autowired
+	UserServiceDelegate userServiceDelegate;
 
 	@Override
-	public List<Candidate> viewInterviewCandidates() {
+	public List<Candidate> viewInterviewCandidates(String authToken) {
 		List<CandidateEntity> candidateEntity = candidateRepo.findAll();
 		List<Candidate> candidateList = new ArrayList<>();
 			for(CandidateEntity candidates: candidateEntity)
@@ -35,7 +39,7 @@ public class TechServiceImpl implements TechService{
 	}
 
 	@Override
-	public Interview giveTechRating(int id, Interview interview) {
+	public Interview giveTechRating(int id, Interview interview, String authToken) {
 		Optional<InterviewEntity> optionalInterviewEntity = interviewRepo.findById(id);
 		if(optionalInterviewEntity.isPresent()) {
 			InterviewEntity interviewEntity = optionalInterviewEntity.get();
@@ -47,7 +51,7 @@ public class TechServiceImpl implements TechService{
 	}
 
 	@Override
-	public Candidate getCandidateById(int id) {
+	public Candidate getCandidateById(int id, String authToken) {
 		Optional<CandidateEntity> candidateId=candidateRepo.findById(id);
 		if(candidateId.isPresent()) {
 		return convertCandidateEntityIntoDto(candidateId.get());
@@ -56,8 +60,10 @@ public class TechServiceImpl implements TechService{
 	}
 
 	@Override
-	public boolean resignTechPanelMember(int id) {
-		// TODO Auto-generated method stub
+	public boolean resignTechPanelMember(int id, String authToken) {
+		if(userServiceDelegate.isTokenValid(authToken)) {
+			return adminServiceDelgate.isDeleteSuccessful(id);
+		}
 		return false;
 	}
 
