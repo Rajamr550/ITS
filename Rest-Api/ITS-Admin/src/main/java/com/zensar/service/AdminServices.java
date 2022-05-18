@@ -10,7 +10,7 @@ public interface AdminServices {
 
 	public Candidate registerCandidate(Candidate candidate);
 
-	public List<Candidate> getAllCandidates();
+	public List<Candidate> getAllCandidates(String token);
 
 	public Candidate getCandidateById(int id);
 
@@ -28,11 +28,13 @@ public interface AdminServices {
 
 	public boolean deleteHRMember(int id);
 
-	public List<PanelMember> getAllPanelMembers();
+	public List<PanelMember> getAllPanelMembers(String token);
 
 	boolean deleteTechMember(int id);
 
 	public boolean deleteInterviewScheduleByID(int id, String token);
+
+	public List<Candidate> getAllCandidates();
 
 //<<<<<<< HEAD
 //	boolean deleteHRMember(int id);

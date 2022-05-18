@@ -122,7 +122,6 @@ public class AdminController {
         }
 	
 	      //8
-      		
         @GetMapping(value="/panel/search",consumes= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})        
         @ApiOperation(value = "searchPanelMembers", notes = "This REST API saerches panel member ")
 
@@ -150,8 +149,8 @@ public class AdminController {
       	@GetMapping(value = "/panel", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_ATOM_XML_VALUE})
         @ApiOperation(value = "getAllPanelMembers", notes = "This REST API returns all panel members")
 
-      	public List<PanelMember> getAllPanelMembers(){
-      		return adminServices.getAllPanelMembers();
+      	public List<PanelMember> getAllPanelMembers(@RequestHeader("Authorization") String token){
+      		return adminServices.getAllPanelMembers(token);
       	}
 	
 	

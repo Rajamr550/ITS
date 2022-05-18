@@ -27,7 +27,6 @@ import com.zensar.exception.InvalidDataShared;
 import com.zensar.exception.InvalidIdException;
 import com.zensar.exception.InvalidAuthTokenException;
 
-
 import com.zensar.repo.CandidateRepo;
 import com.zensar.repo.InterviewScheduleRepo;
 import com.zensar.repo.PanelMemberRepo;
@@ -50,10 +49,12 @@ public class AdminServiceImpl implements AdminServices {
 
 	@Autowired
 	ModelMapper modelMapper;
-	
-//    @Autowired
-//    JwtUtil jwtUtil;
 
+	@Autowired
+	JwtUtil jwtUtil;
+
+	@Autowired
+	UserServiceDelegate userServiceDelegate;
 	@Autowired
 	PanelServiceDelegate panelServiceDelegate;
 
@@ -96,23 +97,33 @@ public class AdminServiceImpl implements AdminServices {
 	}
 
 	// logic
-	
-	
-	//6- delete interview by id
-	
+
+	// 6- delete interview by id
+
 	@Override
 	public boolean deleteInterviewScheduleByID(int id, String token) {
-////		List<InterviewScheduleEntity> interviewList = checkUser(token);
-//		if (interviewList != null) {
-//		    if (interviewScheduleRepo.existsById(id)) {
-//			interviewScheduleRepo.deleteById(id);
-//			return true;
-//		    }
-//
-//		}
+		if (userServiceDelegate.isTokenValid(token)) {
+			if (interviewScheduleRepo.existsById(id)) {
+				interviewScheduleRepo.deleteById(id);
+				return true;
+			}
+			throw new InvalidIdException();
+
+		}
 		throw new InvalidAuthTokenException();
 	}
-	
+
+//    private List<InterviewScheduleEntity> checkUser(String token) {
+//
+//	token = token.substring(7);
+//	String uname = jwtUtil.extractUsername(token);
+//	List<InterviewScheduleEntity> adList = InterviewScheduleRepo.findByUsername(uname);
+//	if (adList == null) {
+//	    throw new InvalidAuthTokenException(uname);
+//	}
+//	return adList;
+//    }
+
 	@Override
 	public List<Candidate> getAllCandidates() {
 
@@ -134,7 +145,8 @@ public class AdminServiceImpl implements AdminServices {
 			CandidateEntity candidateEntity = opCandidateEntity.get();
 			return convertEntityintoDTOForCandidate(candidateEntity);
 		}
-		throw new InvalidIdException();	}
+		throw new InvalidIdException();
+	}
 
 	@Override
 	public PanelMember addPanelMember(PanelMember panelMember) {
@@ -174,7 +186,7 @@ public class AdminServiceImpl implements AdminServices {
 			return "data shared successfully";
 
 		}
-			throw new InvalidDataShared();
+		throw new InvalidDataShared();
 	}
 
 	@Override
@@ -193,16 +205,21 @@ public class AdminServiceImpl implements AdminServices {
 //		throw new InvalidIdException();
 //	}
 
-	public List<PanelMember> getAllPanelMembers() {
-		List<PanelMemberEntity> panelMemberEntity = panelMemberRepo.findAll();
-		List<PanelMember> panelMember = new ArrayList<PanelMember>();
-		Iterator<PanelMemberEntity> itrPanelEntities = panelMemberEntity.iterator();
-		while (itrPanelEntities.hasNext()) {
-			PanelMember panels = convertEntityIntoDTO(itrPanelEntities.next());
-			panelMember.add(panels);
-		}
+	public List<PanelMember> getAllPanelMembers(String token) {
 
-		return panelMember;
+		if (userServiceDelegate.isTokenValid(token)) {
+			List<PanelMemberEntity> panelMemberEntity = panelMemberRepo.findAll();
+			List<PanelMember> panelMember = new ArrayList<PanelMember>();
+			Iterator<PanelMemberEntity> itrPanelEntities = panelMemberEntity.iterator();
+			while (itrPanelEntities.hasNext()) {
+				PanelMember panels = convertEntityIntoDTO(itrPanelEntities.next());
+				panelMember.add(panels);
+				return panelMember;
+
+			}
+		}
+		throw new InvalidAuthTokenException();
+
 	}
 
 	@Override
@@ -254,7 +271,7 @@ public class AdminServiceImpl implements AdminServices {
 
 		TypedQuery<PanelMemberEntity> typedQuery = entityManager.createQuery(criteriaQuery);
 		List<PanelMemberEntity> panelEntityList = typedQuery.getResultList();
-		// write a convert and return advertise list here
+		// write a convert and return InterviewScheduleertise list here
 		List<PanelMember> panelList = new ArrayList<>();
 		for (PanelMemberEntity p : panelEntityList)
 			panelList.add(convertEntityIntoDTO(p));
@@ -263,5 +280,10 @@ public class AdminServiceImpl implements AdminServices {
 	}
 //comment
 
+	@Override
+	public List<Candidate> getAllCandidates(String token) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

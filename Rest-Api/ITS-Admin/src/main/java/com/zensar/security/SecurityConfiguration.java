@@ -20,14 +20,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	UserDetailsService userDetailsService;
 
 	@Override
-	public void configure(AuthenticationManagerBuilder auth) throws Exception{//used for authentication
-		/*
-		 * auth.inMemoryAuthentication().withUser("akshay").password(this.
-		 * passwordEncoder.encode("akshay123")).roles("USER") .and()
-		 * .withUser("golkonda").password(this.passwordEncoder.encode("golkonda123")).
-		 * roles("ADMIN");
-		 */
-		
+	public void configure(AuthenticationManagerBuilder auth) throws Exception{//used for authentication		
 		auth.userDetailsService(userDetailsService);
 	}
 	
