@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+@Service
 public class AdminDelegateServiceImpl implements AdminServiceDelegate {
 	
 	@Autowired
@@ -15,7 +17,7 @@ public class AdminDelegateServiceImpl implements AdminServiceDelegate {
 	public boolean isDeleteSuccessful(int id) {
 		HttpEntity<Integer> entity = new HttpEntity<>(id);
 
-		ResponseEntity<Boolean> response=this.restTemplate.exchange("http://API-GATEWAY/its-admin/panel/tech/{id}", HttpMethod.DELETE, entity, Boolean.class,id);
+		ResponseEntity<Boolean> response=this.restTemplate.exchange("http://localhost:8004/admin/panel/tech/{id}", HttpMethod.DELETE, entity, Boolean.class,id);
 		return response.getBody();
 	}
 	

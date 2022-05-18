@@ -68,29 +68,37 @@ public class AdminController {
 	@Autowired
 	AdminServices adminServices;
 	
+	//satyam
 	//1--Register a candidate
+
+
 	@PostMapping(value="/candidate", consumes= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	@ApiOperation(value = "Adding a candidate", notes = "This Rest API will add Candidate Info")
 	public Candidate registerCandidate(@RequestBody Candidate candidate, @RequestHeader("Authorization") String authToken) {
 		return adminServices.registerCandidate(candidate, authToken);
 	}
 	
 	//2.1-- View All Candidate 
 	@GetMapping(value="/candidate", produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	@ApiOperation(value = "Get all candidate", notes = "This Rest API will help to view all candidate")
 	public List<Candidate> getAllCandidates(@RequestHeader("Authorization") String authToken){
 		return adminServices.getAllCandidates(authToken);
 	}
 	
 	//2.2 -- View a candidate By Id
 	@GetMapping(value="/candidate/{id}", produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	@ApiOperation(value = "Get a candidate by its Id", notes = "This Rest API will help you to view a candidate by ID")
 	public Candidate getCandidateById(@PathVariable("id") int id, @RequestHeader("Authorization") String authToken){
 		return adminServices.getCandidateById(id, authToken);
 	}
 	
 	//7 -- Adding Panel Members
 	@PostMapping(value="/panel", consumes= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	@ApiOperation(value = "Adding a Panel Member", notes = "This Rest API will add Panel member")
 	public PanelMember addPanelMember(@RequestBody PanelMember panelMember, @RequestHeader("Authorization") String authToken) {
 		return adminServices.addPanelMember(panelMember, authToken);
 	}
+
 	
 	
 	

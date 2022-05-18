@@ -13,6 +13,13 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.ApiOperation;
+
+import io.swagger.annotations.ApiParam;
+
+
+
+
 import com.its.dto.User;
 import com.its.service.UserService;
 
@@ -26,6 +33,7 @@ public class UserController {
 
 	//1
 	@PostMapping(value="/user/authenticate", consumes={ MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	@ApiOperation(value = "userAuthenticate", notes = "This Rest API will login a user")
 	public ResponseEntity<String> authenticate(@RequestBody User user) {
 		return new ResponseEntity<String>(userService.authenticate(user),HttpStatus.OK);
 	}

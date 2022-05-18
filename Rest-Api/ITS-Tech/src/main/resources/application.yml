@@ -2,6 +2,13 @@ server:
   port: 8005
   
 
+management:
+ endpoints:
+  web:
+
+   exposure:
+    include: '*'
+
 
 
 spring:
@@ -22,8 +29,4 @@ application:
   name: tech-service
   
 
-
-
-
-        
 
