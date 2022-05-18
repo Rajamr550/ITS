@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CandidateEntity.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">OLX-Advertise</a> &gt; <a href="index.source.html" class="el_package">com.zensar.entity</a> &gt; <span class="el_source">CandidateEntity.java</span></div><h1>CandidateEntity.java</h1><pre class="source lang-java linenums">package com.zensar.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name=&quot;CandidateDetails&quot;)
+public class CandidateEntity {
+
+	@Id
+	@GeneratedValue
+	private int candidateId;
+	private String candidateName;
+	private String primarySkills;
+	private String secondarySkills;
+	private int experience;
+	private String qualification;
+	private String designation;
+	private int noticePeriod;
+	private String location;
+	
+	public CandidateEntity() {
+<span class="nc" id="L26">		super();</span>
+		
+<span class="nc" id="L28">	}</span>
+
+	public CandidateEntity(int candidateId, String candidateName, String primarySkills, String secondarySkills,
+			int experience, String qualification, String designation, int noticePeriod, String location) {
+<span class="nc" id="L32">		super();</span>
+<span class="nc" id="L33">		this.candidateId = candidateId;</span>
+<span class="nc" id="L34">		this.candidateName = candidateName;</span>
+<span class="nc" id="L35">		this.primarySkills = primarySkills;</span>
+<span class="nc" id="L36">		this.secondarySkills = secondarySkills;</span>
+<span class="nc" id="L37">		this.experience = experience;</span>
+<span class="nc" id="L38">		this.qualification = qualification;</span>
+<span class="nc" id="L39">		this.designation = designation;</span>
+<span class="nc" id="L40">		this.noticePeriod = noticePeriod;</span>
+<span class="nc" id="L41">		this.location = location;</span>
+<span class="nc" id="L42">	}</span>
+
+	public int getCandidateId() {
+<span class="nc" id="L45">		return candidateId;</span>
+	}
+
+	public void setCandidateId(int candidateId) {
+<span class="nc" id="L49">		this.candidateId = candidateId;</span>
+<span class="nc" id="L50">	}</span>
+
+	public String getCandidateName() {
+<span class="nc" id="L53">		return candidateName;</span>
+	}
+
+	public void setCandidateName(String candidateName) {
+<span class="nc" id="L57">		this.candidateName = candidateName;</span>
+<span class="nc" id="L58">	}</span>
+
+	public String getPrimarySkills() {
+<span class="nc" id="L61">		return primarySkills;</span>
+	}
+
+	public void setPrimarySkills(String primarySkills) {
+<span class="nc" id="L65">		this.primarySkills = primarySkills;</span>
+<span class="nc" id="L66">	}</span>
+
+	public String getSecondarySkills() {
+<span class="nc" id="L69">		return secondarySkills;</span>
+	}
+
+	public void setSecondarySkills(String secondarySkills) {
+<span class="nc" id="L73">		this.secondarySkills = secondarySkills;</span>
+<span class="nc" id="L74">	}</span>
+
+	public int getExperience() {
+<span class="nc" id="L77">		return experience;</span>
+	}
+
+	public void setExperience(int experience) {
+<span class="nc" id="L81">		this.experience = experience;</span>
+<span class="nc" id="L82">	}</span>
+
+	public String getQualification() {
+<span class="nc" id="L85">		return qualification;</span>
+	}
+
+	public void setQualification(String qualification) {
+<span class="nc" id="L89">		this.qualification = qualification;</span>
+<span class="nc" id="L90">	}</span>
+
+	public String getDesignation() {
+<span class="nc" id="L93">		return designation;</span>
+	}
+
+	public void setDesignation(String designation) {
+<span class="nc" id="L97">		this.designation = designation;</span>
+<span class="nc" id="L98">	}</span>
+
+	public int getNoticePeriod() {
+<span class="nc" id="L101">		return noticePeriod;</span>
+	}
+
+	public void setNoticePeriod(int noticePeriod) {
+<span class="nc" id="L105">		this.noticePeriod = noticePeriod;</span>
+<span class="nc" id="L106">	}</span>
+
+	public String getLocation() {
+<span class="nc" id="L109">		return location;</span>
+	}
+
+	public void setLocation(String location) {
+<span class="nc" id="L113">		this.location = location;</span>
+<span class="nc" id="L114">	}</span>
+
+	@Override
+	public String toString() {
+<span class="nc" id="L118">		return &quot;CandidateEntity [candidateId=&quot; + candidateId + &quot;, candidateName=&quot; + candidateName + &quot;, primarySkills=&quot;</span>
+				+ primarySkills + &quot;, secondarySkills=&quot; + secondarySkills + &quot;, experience=&quot; + experience
+				+ &quot;, qualification=&quot; + qualification + &quot;, designation=&quot; + designation + &quot;, noticePeriod=&quot; + noticePeriod
+				+ &quot;, location=&quot; + location + &quot;]&quot;;
+	}
+	
+	
+	
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

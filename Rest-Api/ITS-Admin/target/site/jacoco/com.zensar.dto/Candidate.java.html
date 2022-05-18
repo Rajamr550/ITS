@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Candidate.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">OLX-Advertise</a> &gt; <a href="index.source.html" class="el_package">com.zensar.dto</a> &gt; <span class="el_source">Candidate.java</span></div><h1>Candidate.java</h1><pre class="source lang-java linenums">package com.zensar.dto;
+
+//entering a new messsage
+public class Candidate {
+
+	
+	private int candidateId;
+	private String candidateName;
+	private String primarySkills;
+	private String secondarySkills;
+	private int experience;
+	private String qualification;
+	private String designation;
+	private int noticePeriod;
+	private String location;
+	
+	public Candidate() {
+<span class="fc" id="L18">		super();</span>
+		
+<span class="fc" id="L20">	}</span>
+
+	public Candidate(int candidateId, String candidateName, String primarySkills, String secondarySkills,
+			int experience, String qualification, String designation, int noticePeriod, String location) {
+<span class="nc" id="L24">		super();</span>
+<span class="nc" id="L25">		this.candidateId = candidateId;</span>
+<span class="nc" id="L26">		this.candidateName = candidateName;</span>
+<span class="nc" id="L27">		this.primarySkills = primarySkills;</span>
+<span class="nc" id="L28">		this.secondarySkills = secondarySkills;</span>
+<span class="nc" id="L29">		this.experience = experience;</span>
+<span class="nc" id="L30">		this.qualification = qualification;</span>
+<span class="nc" id="L31">		this.designation = designation;</span>
+<span class="nc" id="L32">		this.noticePeriod = noticePeriod;</span>
+<span class="nc" id="L33">		this.location = location;</span>
+<span class="nc" id="L34">	}</span>
+
+	public int getCandidateId() {
+<span class="fc" id="L37">		return candidateId;</span>
+	}
+
+	public void setCandidateId(int candidateId) {
+<span class="nc" id="L41">		this.candidateId = candidateId;</span>
+<span class="nc" id="L42">	}</span>
+
+	public String getCandidateName() {
+<span class="fc" id="L45">		return candidateName;</span>
+	}
+
+	public void setCandidateName(String candidateName) {
+<span class="fc" id="L49">		this.candidateName = candidateName;</span>
+<span class="fc" id="L50">	}</span>
+
+	public String getPrimarySkills() {
+<span class="fc" id="L53">		return primarySkills;</span>
+	}
+
+	public void setPrimarySkills(String primarySkills) {
+<span class="nc" id="L57">		this.primarySkills = primarySkills;</span>
+<span class="nc" id="L58">	}</span>
+
+	public String getSecondarySkills() {
+<span class="fc" id="L61">		return secondarySkills;</span>
+	}
+
+	public void setSecondarySkills(String secondarySkills) {
+<span class="nc" id="L65">		this.secondarySkills = secondarySkills;</span>
+<span class="nc" id="L66">	}</span>
+
+	public int getExperience() {
+<span class="fc" id="L69">		return experience;</span>
+	}
+
+	public void setExperience(int experience) {
+<span class="nc" id="L73">		this.experience = experience;</span>
+<span class="nc" id="L74">	}</span>
+
+	public String getQualification() {
+<span class="fc" id="L77">		return qualification;</span>
+	}
+
+	public void setQualification(String qualification) {
+<span class="nc" id="L81">		this.qualification = qualification;</span>
+<span class="nc" id="L82">	}</span>
+
+	public String getDesignation() {
+<span class="fc" id="L85">		return designation;</span>
+	}
+
+	public void setDesignation(String designation) {
+<span class="nc" id="L89">		this.designation = designation;</span>
+<span class="nc" id="L90">	}</span>
+
+	public int getNoticePeriod() {
+<span class="fc" id="L93">		return noticePeriod;</span>
+	}
+
+	public void setNoticePeriod(int noticePeriod) {
+<span class="nc" id="L97">		this.noticePeriod = noticePeriod;</span>
+<span class="nc" id="L98">	}</span>
+
+	public String getLocation() {
+<span class="fc" id="L101">		return location;</span>
+	}
+
+	public void setLocation(String location) {
+<span class="nc" id="L105">		this.location = location;</span>
+<span class="nc" id="L106">	}</span>
+
+	@Override
+	public String toString() {
+<span class="nc" id="L110">		return &quot;CandidateEntity [candidateId=&quot; + candidateId + &quot;, candidateName=&quot; + candidateName + &quot;, primarySkills=&quot;</span>
+				+ primarySkills + &quot;, secondarySkills=&quot; + secondarySkills + &quot;, experience=&quot; + experience
+				+ &quot;, qualification=&quot; + qualification + &quot;, designation=&quot; + designation + &quot;, noticePeriod=&quot; + noticePeriod
+				+ &quot;, location=&quot; + location + &quot;]&quot;;
+	}
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

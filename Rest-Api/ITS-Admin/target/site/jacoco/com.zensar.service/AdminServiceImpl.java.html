@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AdminServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">OLX-Advertise</a> &gt; <a href="index.source.html" class="el_package">com.zensar.service</a> &gt; <span class="el_source">AdminServiceImpl.java</span></div><h1>AdminServiceImpl.java</h1><pre class="source lang-java linenums">package com.zensar.service;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeMap;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.zensar.dto.Candidate;
+import com.zensar.dto.InterviewSchedule;
+import com.zensar.dto.PanelMember;
+import com.zensar.entity.CandidateEntity;
+import com.zensar.entity.InterviewScheduleEntity;
+import com.zensar.entity.PanelMemberEntity;
+import com.zensar.exception.InvalidDataShared;
+import com.zensar.exception.InvalidIdException;
+import com.zensar.exception.InvalidAuthTokenException;
+
+import com.zensar.repo.CandidateRepo;
+import com.zensar.repo.InterviewScheduleRepo;
+import com.zensar.repo.PanelMemberRepo;
+
+import com.zensar.security.*;
+
+@Service
+<span class="nc" id="L37">public class AdminServiceImpl implements AdminServices {</span>
+
+	@Autowired
+	EntityManager entityManager;
+	@Autowired
+	CandidateRepo candidateRepo;
+
+	@Autowired
+	PanelMemberRepo panelMemberRepo;
+
+	@Autowired
+	InterviewScheduleRepo interviewScheduleRepo;
+
+	@Autowired
+	ModelMapper modelMapper;
+
+	@Autowired
+	JwtUtil jwtUtil;
+
+	@Autowired
+	UserServiceDelegate userServiceDelegate;
+	@Autowired
+	PanelServiceDelegate panelServiceDelegate;
+
+	// utils - methods
+	private Candidate convertEntityintoDTOForCandidate(CandidateEntity candidateEntity) {
+
+<span class="nc" id="L64">		Candidate candidate = modelMapper.map(candidateEntity, Candidate.class);</span>
+<span class="nc" id="L65">		return candidate;</span>
+	}
+
+	private CandidateEntity convertDTOintoEntityForCandidate(Candidate candidate) {
+
+<span class="nc" id="L70">		CandidateEntity candidateEntity = modelMapper.map(candidate, CandidateEntity.class);</span>
+<span class="nc" id="L71">		return candidateEntity;</span>
+	}
+
+	// utils
+	private InterviewScheduleEntity convertDTOIntoEntityForInterviewSchedule(InterviewSchedule interviewScheduleDto) {
+<span class="nc" id="L76">		TypeMap&lt;InterviewSchedule, InterviewScheduleEntity&gt; tMap = modelMapper.typeMap(InterviewSchedule.class,</span>
+				InterviewScheduleEntity.class);
+<span class="nc" id="L78">		InterviewScheduleEntity interviewScheduleEntity = modelMapper.map(interviewScheduleDto,</span>
+				InterviewScheduleEntity.class);
+<span class="nc" id="L80">		return interviewScheduleEntity;</span>
+	}
+
+	private InterviewSchedule convertEntityIntoDTOForInterviewScheduleSchedule(
+			InterviewScheduleEntity interviewScheduleEntity) {
+<span class="nc" id="L85">		TypeMap&lt;InterviewScheduleEntity, InterviewSchedule&gt; tMap = modelMapper.typeMap(InterviewScheduleEntity.class,</span>
+				InterviewSchedule.class);
+<span class="nc" id="L87">		InterviewSchedule interviewScheduleDto = modelMapper.map(interviewScheduleEntity, InterviewSchedule.class);</span>
+<span class="nc" id="L88">		return interviewScheduleDto;</span>
+	}
+
+	@Override
+	public Candidate registerCandidate(Candidate candidate) {
+<span class="nc" id="L93">		CandidateEntity candidateEntity = convertDTOintoEntityForCandidate(candidate);</span>
+<span class="nc" id="L94">		candidateEntity = candidateRepo.save(candidateEntity);</span>
+
+<span class="nc" id="L96">		return convertEntityintoDTOForCandidate(candidateEntity);</span>
+	}
+
+	// logic
+
+	// 6- delete interview by id
+
+	@Override
+	public boolean deleteInterviewScheduleByID(int id, String token) {
+<span class="nc bnc" id="L105" title="All 2 branches missed.">		if (userServiceDelegate.isTokenValid(token)) {</span>
+<span class="nc bnc" id="L106" title="All 2 branches missed.">			if (interviewScheduleRepo.existsById(id)) {</span>
+<span class="nc" id="L107">				interviewScheduleRepo.deleteById(id);</span>
+<span class="nc" id="L108">				return true;</span>
+			}
+<span class="nc" id="L110">			throw new InvalidIdException();</span>
+
+		}
+<span class="nc" id="L113">		throw new InvalidAuthTokenException();</span>
+	}
+
+//    private List&lt;InterviewScheduleEntity&gt; checkUser(String token) {
+//
+//	token = token.substring(7);
+//	String uname = jwtUtil.extractUsername(token);
+//	List&lt;InterviewScheduleEntity&gt; adList = InterviewScheduleRepo.findByUsername(uname);
+//	if (adList == null) {
+//	    throw new InvalidAuthTokenException(uname);
+//	}
+//	return adList;
+//    }
+
+	@Override
+	public List&lt;Candidate&gt; getAllCandidates() {
+
+<span class="nc" id="L130">		List&lt;CandidateEntity&gt; candidateEntityList = candidateRepo.findAll();</span>
+<span class="nc" id="L131">		List&lt;Candidate&gt; candidateDtoList = new ArrayList&lt;Candidate&gt;();</span>
+<span class="nc bnc" id="L132" title="All 2 branches missed.">		for (CandidateEntity candidateEntity : candidateEntityList) {</span>
+
+<span class="nc" id="L134">			Candidate candidate = convertEntityintoDTOForCandidate(candidateEntity);</span>
+<span class="nc" id="L135">			candidateDtoList.add(candidate);</span>
+<span class="nc" id="L136">		}</span>
+<span class="nc" id="L137">		return candidateDtoList;</span>
+	}
+
+	@Override
+	public Candidate getCandidateById(int id) {
+
+<span class="nc" id="L143">		Optional&lt;CandidateEntity&gt; opCandidateEntity = candidateRepo.findById(id);</span>
+<span class="nc bnc" id="L144" title="All 2 branches missed.">		if (opCandidateEntity.isPresent()) {</span>
+<span class="nc" id="L145">			CandidateEntity candidateEntity = opCandidateEntity.get();</span>
+<span class="nc" id="L146">			return convertEntityintoDTOForCandidate(candidateEntity);</span>
+		}
+<span class="nc" id="L148">		throw new InvalidIdException();</span>
+	}
+
+	@Override
+	public PanelMember addPanelMember(PanelMember panelMember) {
+<span class="nc" id="L153">		PanelMemberEntity panelMemberEntity = convertDTOIntoEntity(panelMember);</span>
+<span class="nc" id="L154">		panelMemberEntity = panelMemberRepo.save(panelMemberEntity);</span>
+
+<span class="nc" id="L156">		return convertEntityIntoDTO(panelMemberEntity);</span>
+	}
+
+	
+	//nagaraj
+//	private PanelMember convertEntityIntoDTO(PanelMemberEntity panelMemberEntity) {
+//
+//		PanelMember panelMember = modelMapper.map(panelMemberEntity, PanelMember.class);
+//		return panelMember;
+//	}
+
+//	private PanelMemberEntity convertDTOIntoEntity(PanelMember panelMember) {
+//
+//		PanelMemberEntity panelMemberEntity = modelMapper.map(panelMember, PanelMemberEntity.class);
+//		return panelMemberEntity;
+//	}
+
+	// change method name
+	@Override
+	public String shareCandidateWithTech(int interviewScheduleId) {
+
+<span class="nc" id="L177">		InterviewScheduleEntity interviewScheduleEntity2 = interviewScheduleRepo.getById(interviewScheduleId);</span>
+
+<span class="nc" id="L179">		int candidateId = interviewScheduleEntity2.getCandidateId();</span>
+<span class="nc" id="L180">		CandidateEntity candidateEntity2 = candidateRepo.getById(candidateId);</span>
+
+<span class="nc bnc" id="L182" title="All 4 branches missed.">		if (candidateEntity2 != null &amp;&amp; interviewScheduleEntity2 != null) {</span>
+			// delegate
+<span class="nc" id="L184">			panelServiceDelegate.shareCandidateWithPanel(convertEntityintoDTOForCandidate(candidateEntity2));</span>
+
+<span class="nc" id="L186">			panelServiceDelegate</span>
+<span class="nc" id="L187">					.shareScheduleWithPanel(convertEntityIntoDTOForInterviewScheduleSchedule(interviewScheduleEntity2));</span>
+<span class="nc" id="L188">			return &quot;data shared successfully&quot;;</span>
+
+		}
+<span class="nc" id="L191">		throw new InvalidDataShared();</span>
+	}
+
+	@Override
+	public InterviewSchedule createInterviewSchedule(InterviewSchedule interviewScheduleDto) {
+
+<span class="nc" id="L197">		interviewScheduleRepo.save(convertDTOIntoEntityForInterviewSchedule(interviewScheduleDto));</span>
+<span class="nc" id="L198">		return interviewScheduleDto;</span>
+	}
+
+//	@Override
+//	public boolean deleteInterviewScheduleByID(int id) {
+//		if (interviewScheduleRepo.existsById(id)) {
+//			interviewScheduleRepo.deleteById(id);
+//			return true;
+//		}
+//		throw new InvalidIdException();
+//	}
+
+	public List&lt;PanelMember&gt; getAllPanelMembers(String token) {
+
+<span class="nc bnc" id="L212" title="All 2 branches missed.">		if (userServiceDelegate.isTokenValid(token)) {</span>
+<span class="nc" id="L213">			List&lt;PanelMemberEntity&gt; panelMemberEntity = panelMemberRepo.findAll();</span>
+<span class="nc" id="L214">			List&lt;PanelMember&gt; panelMember = new ArrayList&lt;PanelMember&gt;();</span>
+<span class="nc" id="L215">			Iterator&lt;PanelMemberEntity&gt; itrPanelEntities = panelMemberEntity.iterator();</span>
+<span class="nc bnc" id="L216" title="All 2 branches missed.">			while (itrPanelEntities.hasNext()) {</span>
+<span class="nc" id="L217">				PanelMember panels = convertEntityIntoDTO(itrPanelEntities.next());</span>
+<span class="nc" id="L218">				panelMember.add(panels);</span>
+<span class="nc" id="L219">				return panelMember;</span>
+
+			}
+		}
+<span class="nc" id="L223">		throw new InvalidAuthTokenException();</span>
+
+	}
+
+	@Override
+	public boolean deleteTechMember(int id) {
+
+<span class="nc bnc" id="L230" title="All 2 branches missed.">		if (panelMemberRepo.existsById(id)) {</span>
+<span class="nc bnc" id="L231" title="All 2 branches missed.">			if (panelMemberRepo.getById(id).getType().equalsIgnoreCase(&quot;Tech&quot;)) {</span>
+<span class="nc" id="L232">				panelMemberRepo.deleteById(id);</span>
+<span class="nc" id="L233">				return true;</span>
+			}
+		}
+<span class="nc" id="L236">		throw new InvalidIdException();</span>
+	}
+
+	@Override
+	public boolean deleteHRMember(int id) {
+
+<span class="nc bnc" id="L242" title="All 2 branches missed.">		if (panelMemberRepo.existsById(id)) {</span>
+<span class="nc bnc" id="L243" title="All 2 branches missed.">			if (panelMemberRepo.getById(id).getType().equalsIgnoreCase(&quot;HR&quot;)) {</span>
+<span class="nc" id="L244">				panelMemberRepo.deleteById(id);</span>
+<span class="nc" id="L245">				return true;</span>
+			}
+<span class="nc" id="L247">			throw new InvalidIdException();</span>
+
+		}
+<span class="nc" id="L250">		throw new InvalidIdException();</span>
+	}
+
+	@Override
+	public List&lt;PanelMember&gt; searchEmployee(Integer id, String name) {
+<span class="nc" id="L255">		CriteriaBuilder critertiaBuilder = entityManager.getCriteriaBuilder();</span>
+<span class="nc" id="L256">		CriteriaQuery&lt;PanelMemberEntity&gt; criteriaQuery = critertiaBuilder.createQuery(PanelMemberEntity.class);</span>
+<span class="nc" id="L257">		Root&lt;PanelMemberEntity&gt; rootEntity = criteriaQuery.from(PanelMemberEntity.class);</span>
+
+<span class="nc" id="L259">		Predicate predicateId = critertiaBuilder.and();</span>
+<span class="nc" id="L260">		Predicate predicateName = critertiaBuilder.and();</span>
+<span class="nc" id="L261">		Predicate predicateFinal = critertiaBuilder.and();</span>
+
+<span class="nc bnc" id="L263" title="All 4 branches missed.">		if (name != null &amp;&amp; !&quot;&quot;.equalsIgnoreCase(name)) {</span>
+<span class="nc" id="L264">			predicateName = critertiaBuilder.like(rootEntity.get(&quot;name&quot;), &quot;%&quot; + name + &quot;%&quot;);</span>
+
+		}
+<span class="nc bnc" id="L267" title="All 2 branches missed.">		if (id != null) {</span>
+<span class="nc" id="L268">			predicateId = critertiaBuilder.equal(rootEntity.get(&quot;employeeId&quot;), id);</span>
+		}
+
+<span class="nc" id="L271">		predicateFinal = critertiaBuilder.and(predicateId, predicateName);</span>
+<span class="nc" id="L272">		criteriaQuery.where(predicateFinal);</span>
+
+<span class="nc" id="L274">		TypedQuery&lt;PanelMemberEntity&gt; typedQuery = entityManager.createQuery(criteriaQuery);</span>
+<span class="nc" id="L275">		List&lt;PanelMemberEntity&gt; panelEntityList = typedQuery.getResultList();</span>
+		// write a convert and return InterviewScheduleertise list here
+<span class="nc" id="L277">		List&lt;PanelMember&gt; panelList = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L278" title="All 2 branches missed.">		for (PanelMemberEntity p : panelEntityList)</span>
+<span class="nc" id="L279">			panelList.add(convertEntityIntoDTO(p));</span>
+
+<span class="nc" id="L281">		return panelList;</span>
+	}
+//comment
+
+//	@Override
+//	public List&lt;Candidate&gt; getAllCandidates(String token) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+	
+	
+	//satyam
+	
+	@Override
+	public Candidate registerCandidate(Candidate candidate, String authToken) {
+<span class="nc bnc" id="L296" title="All 2 branches missed.">		if(userServiceDelegate.isTokenValid(authToken)) {</span>
+<span class="nc" id="L297">		CandidateEntity candidateEntity = convertDTOintoEntity(candidate);</span>
+<span class="nc" id="L298">		candidateEntity = candidateRepo.save(candidateEntity);</span>
+
+<span class="nc" id="L300">		return convertEntityintoDTO(candidateEntity);</span>
+		}
+<span class="nc" id="L302">		throw new InvalidAuthTokenException();</span>
+	}
+
+	private Candidate convertEntityintoDTO(CandidateEntity candidateEntity) {
+
+<span class="nc" id="L307">		Candidate candidate = modelMapper.map(candidateEntity, Candidate.class);</span>
+<span class="nc" id="L308">		return candidate;</span>
+	}
+
+	private CandidateEntity convertDTOintoEntity(Candidate candidate) {
+
+<span class="nc" id="L313">		CandidateEntity candidateEntity = modelMapper.map(candidate, CandidateEntity.class);</span>
+<span class="nc" id="L314">		return candidateEntity;</span>
+	}
+
+	@Override
+	public List&lt;Candidate&gt; getAllCandidates(String authToken) {
+<span class="nc bnc" id="L319" title="All 2 branches missed.">		if(userServiceDelegate.isTokenValid(authToken)) {</span>
+<span class="nc" id="L320">		List&lt;CandidateEntity&gt; candidateEntityList =candidateRepo.findAll();</span>
+<span class="nc" id="L321">		List&lt;Candidate&gt; candidateDtoList=new ArrayList&lt;Candidate&gt;();</span>
+<span class="nc bnc" id="L322" title="All 2 branches missed.">		for(CandidateEntity candidateEntity : candidateEntityList) {</span>
+			
+<span class="nc" id="L324">			Candidate candidate=convertEntityintoDTO(candidateEntity);</span>
+<span class="nc" id="L325">			candidateDtoList.add(candidate);</span>
+<span class="nc" id="L326">		}</span>
+<span class="nc" id="L327">		return  candidateDtoList;</span>
+		}
+<span class="nc" id="L329">		throw new InvalidAuthTokenException();</span>
+	}
+
+	@Override
+	public Candidate getCandidateById(int id, String authToken) {
+<span class="nc bnc" id="L334" title="All 2 branches missed.">		if(userServiceDelegate.isTokenValid(authToken)) {</span>
+<span class="nc" id="L335">		Optional&lt;CandidateEntity&gt; opCandidateEntity = candidateRepo.findById(id);</span>
+<span class="nc bnc" id="L336" title="All 2 branches missed.">		if(opCandidateEntity.isPresent()) {</span>
+<span class="nc" id="L337">			CandidateEntity candidateEntity=opCandidateEntity.get();</span>
+<span class="nc" id="L338">			return convertEntityintoDTO(candidateEntity);</span>
+			}
+		}
+<span class="nc" id="L341">		throw new InvalidIdException();</span>
+	}
+
+	@Override
+	public PanelMember addPanelMember(PanelMember panelMember, String authToken) {
+<span class="nc bnc" id="L346" title="All 2 branches missed.">		if(userServiceDelegate.isTokenValid(authToken)) {</span>
+<span class="nc" id="L347">		PanelMemberEntity panelMemberEntity = convertDTOIntoEntity(panelMember);</span>
+<span class="nc" id="L348">		panelMemberEntity = panelMemberRepo.save(panelMemberEntity);</span>
+
+<span class="nc" id="L350">		return convertEntityIntoDTO(panelMemberEntity);</span>
+		}
+<span class="nc" id="L352">		throw new InvalidAuthTokenException();</span>
+	}
+	
+	private PanelMember convertEntityIntoDTO(PanelMemberEntity panelMemberEntity) {
+
+<span class="nc" id="L357">		PanelMember panelMember = modelMapper.map(panelMemberEntity, PanelMember.class);</span>
+<span class="nc" id="L358">		return panelMember;</span>
+	}
+
+	private PanelMemberEntity convertDTOIntoEntity(PanelMember panelMember) {
+
+<span class="nc" id="L363">		PanelMemberEntity panelMemberEntity = modelMapper.map(panelMember, PanelMemberEntity.class);</span>
+<span class="nc" id="L364">		return panelMemberEntity;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>InterviewScheduleEntity.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">OLX-Advertise</a> &gt; <a href="index.source.html" class="el_package">com.zensar.entity</a> &gt; <span class="el_source">InterviewScheduleEntity.java</span></div><h1>InterviewScheduleEntity.java</h1><pre class="source lang-java linenums">package com.zensar.entity;
+
+import java.time.LocalDate;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name=&quot;InterviewScheduleDetails&quot;)
+public class InterviewScheduleEntity {
+
+	
+	@Id
+	@GeneratedValue
+	private int interviewId;
+	private int candidateId;
+	private int techRating;
+	private int hrRating;
+	private String finalStatus;
+	private LocalDate interviewDate;
+	public InterviewScheduleEntity(int interviewId, int candidateId, int techRating, int hrRating, String finalStatus,
+			LocalDate interviewDate) {
+<span class="nc" id="L25">		super();</span>
+<span class="nc" id="L26">		this.interviewId = interviewId;</span>
+<span class="nc" id="L27">		this.candidateId = candidateId;</span>
+<span class="nc" id="L28">		this.techRating = techRating;</span>
+<span class="nc" id="L29">		this.hrRating = hrRating;</span>
+<span class="nc" id="L30">		this.finalStatus = finalStatus;</span>
+<span class="nc" id="L31">		this.interviewDate = interviewDate;</span>
+<span class="nc" id="L32">	}</span>
+	public InterviewScheduleEntity() {
+<span class="nc" id="L34">		super();</span>
+		
+<span class="nc" id="L36">	}</span>
+	public int getInterviewId() {
+<span class="nc" id="L38">		return interviewId;</span>
+	}
+	public void setInterviewId(int interviewId) {
+<span class="nc" id="L41">		this.interviewId = interviewId;</span>
+<span class="nc" id="L42">	}</span>
+	public int getCandidateId() {
+<span class="nc" id="L44">		return candidateId;</span>
+	}
+	public void setCandidateId(int candidateId) {
+<span class="nc" id="L47">		this.candidateId = candidateId;</span>
+<span class="nc" id="L48">	}</span>
+	public int getTechRating() {
+<span class="nc" id="L50">		return techRating;</span>
+	}
+	public void setTechRating(int techRating) {
+<span class="nc" id="L53">		this.techRating = techRating;</span>
+<span class="nc" id="L54">	}</span>
+	public int getHrRating() {
+<span class="nc" id="L56">		return hrRating;</span>
+	}
+	public void setHrRating(int hrRating) {
+<span class="nc" id="L59">		this.hrRating = hrRating;</span>
+<span class="nc" id="L60">	}</span>
+	public String getFinalStatus() {
+<span class="nc" id="L62">		return finalStatus;</span>
+	}
+	public void setFinalStatus(String finalStatus) {
+<span class="nc" id="L65">		this.finalStatus = finalStatus;</span>
+<span class="nc" id="L66">	}</span>
+	public LocalDate getInterviewDate() {
+<span class="nc" id="L68">		return interviewDate;</span>
+	}
+	public void setInterviewDate(LocalDate interviewDate) {
+<span class="nc" id="L71">		this.interviewDate = interviewDate;</span>
+<span class="nc" id="L72">	}</span>
+	@Override
+	public String toString() {
+<span class="nc" id="L75">		return &quot;InterviewScheduleEntity [interviewId=&quot; + interviewId + &quot;, candidateId=&quot; + candidateId + &quot;, techRating=&quot;</span>
+				+ techRating + &quot;, hrRating=&quot; + hrRating + &quot;, finalStatus=&quot; + finalStatus + &quot;, interviewDate=&quot;
+				+ interviewDate + &quot;]&quot;;
+	}
+	
+	
+	
+	
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

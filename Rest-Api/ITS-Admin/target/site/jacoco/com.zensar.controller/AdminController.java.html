@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AdminController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">OLX-Advertise</a> &gt; <a href="index.source.html" class="el_package">com.zensar.controller</a> &gt; <span class="el_source">AdminController.java</span></div><h1>AdminController.java</h1><pre class="source lang-java linenums">/*
+ * post
+ * 	adding - candidate,interview,hr,tech
+ * 
+ * get
+ * 	view - candidate,hr,tech
+ * 	8.search rmployee by id or name[custom repo]
+ * 	3.share the candidates
+ * 		switch(&quot;tech&quot;)
+ * 			[candidateId ---&gt; techId]
+ * 			hashmap[canId,techId];
+ * 			
+ * 
+ * put
+ * 	priority -2
+ * 	
+ * 
+ * Delete
+ *    cancel interview
+ *    delete panel members
+ *    
+ *    
+ *Priroity - 2
+ *	listing all the interview list - get
+ *	delete candidate - delete
+ *	
+ *
+ *other endpoints 
+ *	getByCandidateId(id)
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
+
+package com.zensar.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.zensar.dto.Candidate;
+import com.zensar.dto.InterviewSchedule;
+import com.zensar.dto.PanelMember;
+import com.zensar.service.AdminServices;
+
+import io.swagger.annotations.ApiOperation;
+
+
+@RestController
+@RequestMapping(&quot;/admin&quot;)
+@CrossOrigin(origins=&quot;*&quot;)
+<span class="fc" id="L66">public class AdminController {</span>
+
+	@Autowired
+	AdminServices adminServices;
+	
+	//satyam
+	//1--Register a candidate
+
+
+	@PostMapping(value=&quot;/candidate&quot;, consumes= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	@ApiOperation(value = &quot;Adding a candidate&quot;, notes = &quot;This Rest API will add Candidate Info&quot;)
+	public Candidate registerCandidate(@RequestBody Candidate candidate, @RequestHeader(&quot;Authorization&quot;) String authToken) {
+<span class="nc" id="L78">		return adminServices.registerCandidate(candidate, authToken);</span>
+	}
+	
+	//2.1-- View All Candidate 
+	@GetMapping(value=&quot;/candidate&quot;, produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	@ApiOperation(value = &quot;Get all candidate&quot;, notes = &quot;This Rest API will help to view all candidate&quot;)
+	public List&lt;Candidate&gt; getAllCandidates(@RequestHeader(&quot;Authorization&quot;) String authToken){
+<span class="fc" id="L85">		return adminServices.getAllCandidates(authToken);</span>
+	}
+	
+	//2.2 -- View a candidate By Id
+	@GetMapping(value=&quot;/candidate/{id}&quot;, produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	@ApiOperation(value = &quot;Get a candidate by its Id&quot;, notes = &quot;This Rest API will help you to view a candidate by ID&quot;)
+	public Candidate getCandidateById(@PathVariable(&quot;id&quot;) int id, @RequestHeader(&quot;Authorization&quot;) String authToken){
+<span class="fc" id="L92">		return adminServices.getCandidateById(id, authToken);</span>
+	}
+	
+	//7 -- Adding Panel Members
+	@PostMapping(value=&quot;/panel&quot;, consumes= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	@ApiOperation(value = &quot;Adding a Panel Member&quot;, notes = &quot;This Rest API will add Panel member&quot;)
+	public PanelMember addPanelMember(@RequestBody PanelMember panelMember, @RequestHeader(&quot;Authorization&quot;) String authToken) {
+<span class="nc" id="L99">		return adminServices.addPanelMember(panelMember, authToken);</span>
+	}
+
+	
+	
+	
+	//raja
+    //services-3,4,6
+
+	
+    @PostMapping(value = &quot;/share/tech/{id}&quot;, produces = { MediaType.APPLICATION_JSON_VALUE,
+    	    MediaType.APPLICATION_XML_VALUE })
+    @ApiOperation(value = &quot;shareDataWithTech&quot;, notes = &quot;This api will map the tech id with candidate id for the interview&quot;)
+
+        public String shareCandidateWithTech(@PathVariable(&quot;id&quot;) int id) {
+<span class="nc" id="L114">    	return adminServices.shareCandidateWithTech(id);</span>
+        }
+
+        @PostMapping(value = &quot;/interview&quot;, produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+        @ApiOperation(value = &quot;createInterview&quot;, notes = &quot;This api will create a new interview&quot;)
+
+        public InterviewSchedule createInterview(@RequestBody InterviewSchedule interviewDto) {
+<span class="nc" id="L121">    	return adminServices.createInterviewSchedule(interviewDto);</span>
+        }
+
+        @DeleteMapping(value = &quot;/interview/{id}&quot;)
+        @ApiOperation(value = &quot;deleteInterviewByID&quot;, notes = &quot;This REST API Deletes an interview by id&quot;)
+
+        public boolean deleteInterviewScheduleByID(@PathVariable(&quot;id&quot;) int id,@RequestHeader(&quot;Authorization&quot;) String token) {
+<span class="fc" id="L128">    	return adminServices.deleteInterviewScheduleByID(id,token);</span>
+        }
+	
+	      //8
+        @GetMapping(value=&quot;/panel/search&quot;,consumes= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})        
+        @ApiOperation(value = &quot;searchPanelMembers&quot;, notes = &quot;This REST API saerches panel member &quot;)
+
+      		public List&lt;PanelMember&gt;searchEmployee(@RequestParam(name=&quot;id&quot;,required=false)Integer id,
+      				@RequestParam(name=&quot;name&quot;,required=false)String name){
+<span class="nc" id="L137">      			return adminServices.searchEmployee(id,name);</span>
+      		}
+	
+	//9.1
+      	@DeleteMapping(value = &quot;/panel/tech/{id}&quot;)
+        @ApiOperation(value = &quot;deletePanelByTechID&quot;, notes = &quot;This REST API Deletes an panel member by id&quot;)
+
+      	public boolean deleteTechMember(@PathVariable(&quot;id&quot;) int id) {
+<span class="fc" id="L145">      		return adminServices.deleteTechMember(id);</span>
+      	}
+      	//9.2
+      	@DeleteMapping(value = &quot;/panel/hr/{id}&quot;)
+        @ApiOperation(value = &quot;deletePanelByHRID&quot;, notes = &quot;This REST API Deletes an panel member by id&quot;)
+
+      	public boolean deleteHRMember(@PathVariable(&quot;id&quot;) int id) {
+<span class="fc" id="L152">      		return adminServices.deleteHRMember(id);</span>
+      	}
+      	
+      	//10
+      	@GetMapping(value = &quot;/panel&quot;, produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_ATOM_XML_VALUE})
+        @ApiOperation(value = &quot;getAllPanelMembers&quot;, notes = &quot;This REST API returns all panel members&quot;)
+
+      	public List&lt;PanelMember&gt; getAllPanelMembers(@RequestHeader(&quot;Authorization&quot;) String token){
+<span class="fc" id="L160">      		return adminServices.getAllPanelMembers(token);</span>
+      	}
+	
+	
+	
+	
+	
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
