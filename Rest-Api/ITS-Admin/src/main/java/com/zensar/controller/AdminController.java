@@ -116,7 +116,7 @@ public class AdminController {
         @DeleteMapping(value = "/interview/{id}")
         @ApiOperation(value = "deleteInterviewByID", notes = "This REST API Deletes an interview by id")
 
-        public boolean deleteInterviewByID(@PathVariable("id") int id,@RequestHeader("Authorization") String token) {
+        public boolean deleteInterviewScheduleByID(@PathVariable("id") int id,@RequestHeader("Authorization") String token) {
     	return adminServices.deleteInterviewScheduleByID(id,token);
         }
 	
@@ -134,7 +134,7 @@ public class AdminController {
         @ApiOperation(value = "deletePanelByTechID", notes = "This REST API Deletes an panel member by id")
 
       	public boolean deleteTechMember(@PathVariable("id") int id) {
-      		return adminServices.deleteHRMember(id);
+      		return adminServices.deleteTechMember(id);
       	}
       	//9.2
       	@DeleteMapping(value = "/panel/hr/{id}")
