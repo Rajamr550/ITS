@@ -42,16 +42,22 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.zensar.dto.Candidate;
+import com.zensar.dto.InterviewSchedule;
 import com.zensar.dto.PanelMember;
 import com.zensar.service.AdminServices;
+
+//import io.swagger.annotations.ApiOperation;
+
 
 @RestController
 @RequestMapping("/admin")
@@ -87,8 +93,55 @@ public class AdminController {
 	
 	
 	
+	//raja
+    //services-3,4,6
+
 	
+    @PostMapping(value = "/share/tech/{id}", produces = { MediaType.APPLICATION_JSON_VALUE,
+    	    MediaType.APPLICATION_XML_VALUE })
+//        @ApiOperation(value = "shareDataWithTech", notes = "This api will map the tech id with candidate id for the interview")
+
+        public String shareCandidateWithTech(@PathVariable("id") int id) {
+    	return adminServices.shareCandidateWithTech(id);
+        }
+
+        @PostMapping(value = "/interview", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+//        @ApiOperation(value = "createInterview", notes = "This api will create a new interview")
+
+        public InterviewSchedule createInterview(@RequestBody InterviewSchedule interviewDto) {
+    	return adminServices.createInterviewSchedule(interviewDto);
+        }
+
+        @DeleteMapping(value = "/interview/{id}")
+//        @ApiOperation(value = "deleteInterviewByID", notes = "This REST API Deletes an interview by id")
+
+        public boolean deleteInterviewByID(@PathVariable("id") int id) {
+    	return adminServices.deleteInterviewScheduleByID(id);
+        }
 	
+	      //8
+      		@GetMapping(value="/panel/search",consumes= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+      		public List<PanelMember>searchEmployee(@RequestParam(name="id",required=false)Integer id,
+      				@RequestParam(name="name",required=false)String name){
+      			return adminServices.searchEmployee(id,name);
+      		}
+	
+	//9.1
+      	@DeleteMapping(value = "/panel/tech/{id}")
+      	public boolean deleteTechMember(@PathVariable("id") int id) {
+      		return adminServices.deleteHRMember(id);
+      	}
+      	//9.2
+      	@DeleteMapping(value = "/panel/hr/{id}")
+      	public boolean deleteHRMember(@PathVariable("id") int id) {
+      		return adminServices.deleteHRMember(id);
+      	}
+      	
+      	//10
+      	@GetMapping(value = "/panel", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_ATOM_XML_VALUE})
+      	public List<PanelMember> getAllPanelMembers(){
+      		return adminServices.getAllPanelMembers();
+      	}
 	
 	
 	
