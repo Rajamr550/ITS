@@ -18,7 +18,7 @@ public class InvalidIdException extends RuntimeException {
 
     @Override
     public String toString() {
-	return "InvalidStockIdException [msg=" + msg + "]";
+	return " [msg=" + msg + "]";
     }
 
 }

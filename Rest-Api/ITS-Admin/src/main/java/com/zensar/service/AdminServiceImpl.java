@@ -23,9 +23,16 @@ import com.zensar.dto.PanelMember;
 import com.zensar.entity.CandidateEntity;
 import com.zensar.entity.InterviewScheduleEntity;
 import com.zensar.entity.PanelMemberEntity;
+import com.zensar.exception.InvalidDataShared;
+import com.zensar.exception.InvalidIdException;
+import com.zensar.exception.InvalidAuthTokenException;
+
+
 import com.zensar.repo.CandidateRepo;
 import com.zensar.repo.InterviewScheduleRepo;
 import com.zensar.repo.PanelMemberRepo;
+
+import com.zensar.security.*;
 
 @Service
 public class AdminServiceImpl implements AdminServices {
@@ -43,6 +50,9 @@ public class AdminServiceImpl implements AdminServices {
 
 	@Autowired
 	ModelMapper modelMapper;
+	
+//    @Autowired
+//    JwtUtil jwtUtil;
 
 	@Autowired
 	PanelServiceDelegate panelServiceDelegate;
@@ -86,6 +96,23 @@ public class AdminServiceImpl implements AdminServices {
 	}
 
 	// logic
+	
+	
+	//6- delete interview by id
+	
+	@Override
+	public boolean deleteInterviewScheduleByID(int id, String token) {
+////		List<InterviewScheduleEntity> interviewList = checkUser(token);
+//		if (interviewList != null) {
+//		    if (interviewScheduleRepo.existsById(id)) {
+//			interviewScheduleRepo.deleteById(id);
+//			return true;
+//		    }
+//
+//		}
+		throw new InvalidAuthTokenException();
+	}
+	
 	@Override
 	public List<Candidate> getAllCandidates() {
 
@@ -107,8 +134,7 @@ public class AdminServiceImpl implements AdminServices {
 			CandidateEntity candidateEntity = opCandidateEntity.get();
 			return convertEntityintoDTOForCandidate(candidateEntity);
 		}
-		return null;
-	}
+		throw new InvalidIdException();	}
 
 	@Override
 	public PanelMember addPanelMember(PanelMember panelMember) {
@@ -148,7 +174,7 @@ public class AdminServiceImpl implements AdminServices {
 			return "data shared successfully";
 
 		}
-		return "data shared failed";
+			throw new InvalidDataShared();
 	}
 
 	@Override
@@ -158,14 +184,14 @@ public class AdminServiceImpl implements AdminServices {
 		return interviewScheduleDto;
 	}
 
-	@Override
-	public boolean deleteInterviewScheduleByID(int id) {
-		if (interviewScheduleRepo.existsById(id)) {
-			interviewScheduleRepo.deleteById(id);
-			return true;
-		}
-		return false;
-	}
+//	@Override
+//	public boolean deleteInterviewScheduleByID(int id) {
+//		if (interviewScheduleRepo.existsById(id)) {
+//			interviewScheduleRepo.deleteById(id);
+//			return true;
+//		}
+//		throw new InvalidIdException();
+//	}
 
 	public List<PanelMember> getAllPanelMembers() {
 		List<PanelMemberEntity> panelMemberEntity = panelMemberRepo.findAll();
@@ -187,9 +213,8 @@ public class AdminServiceImpl implements AdminServices {
 				panelMemberRepo.deleteById(id);
 				return true;
 			}
-			return false;
 		}
-		return false;
+		throw new InvalidIdException();
 	}
 
 	@Override
@@ -200,9 +225,10 @@ public class AdminServiceImpl implements AdminServices {
 				panelMemberRepo.deleteById(id);
 				return true;
 			}
-			return false;
+			throw new InvalidIdException();
+
 		}
-		return false;
+		throw new InvalidIdException();
 	}
 
 	@Override
@@ -236,4 +262,6 @@ public class AdminServiceImpl implements AdminServices {
 		return panelList;
 	}
 //comment
+
+
 }

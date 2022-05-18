@@ -47,6 +47,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -87,6 +88,7 @@ public class AdminController {
 	
 	//7 -- Adding Panel Members
 	@PostMapping(value="/panel", consumes= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	
 	public PanelMember addPanelMember(@RequestBody PanelMember panelMember) {
 		return adminServices.addPanelMember(panelMember);
 	}
@@ -99,28 +101,31 @@ public class AdminController {
 	
     @PostMapping(value = "/share/tech/{id}", produces = { MediaType.APPLICATION_JSON_VALUE,
     	    MediaType.APPLICATION_XML_VALUE })
-//        @ApiOperation(value = "shareDataWithTech", notes = "This api will map the tech id with candidate id for the interview")
+    @ApiOperation(value = "shareDataWithTech", notes = "This api will map the tech id with candidate id for the interview")
 
         public String shareCandidateWithTech(@PathVariable("id") int id) {
     	return adminServices.shareCandidateWithTech(id);
         }
 
         @PostMapping(value = "/interview", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-//        @ApiOperation(value = "createInterview", notes = "This api will create a new interview")
+        @ApiOperation(value = "createInterview", notes = "This api will create a new interview")
 
         public InterviewSchedule createInterview(@RequestBody InterviewSchedule interviewDto) {
     	return adminServices.createInterviewSchedule(interviewDto);
         }
 
         @DeleteMapping(value = "/interview/{id}")
-//        @ApiOperation(value = "deleteInterviewByID", notes = "This REST API Deletes an interview by id")
+        @ApiOperation(value = "deleteInterviewByID", notes = "This REST API Deletes an interview by id")
 
-        public boolean deleteInterviewByID(@PathVariable("id") int id) {
-    	return adminServices.deleteInterviewScheduleByID(id);
+        public boolean deleteInterviewByID(@PathVariable("id") int id,@RequestHeader("Authorization") String token) {
+    	return adminServices.deleteInterviewScheduleByID(id,token);
         }
 	
 	      //8
-      		@GetMapping(value="/panel/search",consumes= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+      		
+        @GetMapping(value="/panel/search",consumes= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})        
+        @ApiOperation(value = "searchPanelMembers", notes = "This REST API saerches panel member ")
+
       		public List<PanelMember>searchEmployee(@RequestParam(name="id",required=false)Integer id,
       				@RequestParam(name="name",required=false)String name){
       			return adminServices.searchEmployee(id,name);
@@ -128,17 +133,23 @@ public class AdminController {
 	
 	//9.1
       	@DeleteMapping(value = "/panel/tech/{id}")
+        @ApiOperation(value = "deletePanelByTechID", notes = "This REST API Deletes an panel member by id")
+
       	public boolean deleteTechMember(@PathVariable("id") int id) {
       		return adminServices.deleteHRMember(id);
       	}
       	//9.2
       	@DeleteMapping(value = "/panel/hr/{id}")
+        @ApiOperation(value = "deletePanelByHRID", notes = "This REST API Deletes an panel member by id")
+
       	public boolean deleteHRMember(@PathVariable("id") int id) {
       		return adminServices.deleteHRMember(id);
       	}
       	
       	//10
       	@GetMapping(value = "/panel", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_ATOM_XML_VALUE})
+        @ApiOperation(value = "getAllPanelMembers", notes = "This REST API returns all panel members")
+
       	public List<PanelMember> getAllPanelMembers(){
       		return adminServices.getAllPanelMembers();
       	}

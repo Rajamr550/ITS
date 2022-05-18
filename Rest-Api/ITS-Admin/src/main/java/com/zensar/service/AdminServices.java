@@ -22,7 +22,7 @@ public interface AdminServices {
 
 	InterviewSchedule createInterviewSchedule(InterviewSchedule interviewScheduleDto);
 
-	boolean deleteInterviewScheduleByID(int id);
+//	boolean deleteInterviewScheduleByID(int id);
         
 	public List<PanelMember> searchEmployee(Integer id, String name);
 
@@ -31,6 +31,8 @@ public interface AdminServices {
 	public List<PanelMember> getAllPanelMembers();
 
 	boolean deleteTechMember(int id);
+
+	public boolean deleteInterviewScheduleByID(int id, String token);
 
 //<<<<<<< HEAD
 //	boolean deleteHRMember(int id);
