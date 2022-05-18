@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.zensar.dto.Candidate;
-import com.zensar.dto.Interview;
+import com.zensar.dto.InterviewSchedule;
 import com.zensar.service.TechService;
 
 @RestController
@@ -35,8 +35,8 @@ public class TechController {
 	@PutMapping(value = "/interview/{id}", consumes = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE,
 					MediaType.APPLICATION_XML_VALUE })
-	public Interview giveTechRating(@PathVariable("id") int id,
-			@RequestBody Interview interview, @RequestHeader("Authorization") String authToken) {
+	public InterviewSchedule giveTechRating(@PathVariable("id") int id,
+			@RequestBody InterviewSchedule interview, @RequestHeader("Authorization") String authToken) {
 		return techService.giveTechRating(id, interview, authToken);
 		
 	}
@@ -68,14 +68,14 @@ public class TechController {
 	@PostMapping(value = "/schedule/entry", consumes = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE,
 					MediaType.APPLICATION_XML_VALUE })
-	public Interview scheduleInterview(@RequestBody Interview interviewSchedule) {
+	public InterviewSchedule scheduleInterview(@RequestBody InterviewSchedule interviewSchedule) {
 		return techService.scheduleInterview(interviewSchedule);
 		
 	}
 
 
 	@GetMapping(value = "/interview", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public List<Interview> viewInterviewSchedules() {
+	public List<InterviewSchedule> viewInterviewSchedules() {
 		return techService.viewInterviewSchedules();
 		
 	}

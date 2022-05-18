@@ -9,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.zensar.dto.Candidate;
-import com.zensar.dto.Interview;
+import com.zensar.dto.InterviewSchedule;
 import com.zensar.entity.CandidateEntity;
-import com.zensar.entity.InterviewEntity;
+import com.zensar.entity.InterviewScheduleEntity;
 import com.zensar.repo.CandidateRepo;
 import com.zensar.repo.InterviewRepo;
 
@@ -39,10 +39,10 @@ public class TechServiceImpl implements TechService{
 	}
 
 	@Override
-	public Interview giveTechRating(int id, Interview interview, String authToken) {
-		Optional<InterviewEntity> optionalInterviewEntity = interviewRepo.findById(id);
+	public InterviewSchedule giveTechRating(int id, InterviewSchedule interview, String authToken) {
+		Optional<InterviewScheduleEntity> optionalInterviewEntity = interviewRepo.findById(id);
 		if(optionalInterviewEntity.isPresent()) {
-			InterviewEntity interviewEntity = optionalInterviewEntity.get();
+			InterviewScheduleEntity interviewEntity = optionalInterviewEntity.get();
 			interviewEntity.setTechRating(interview.getTechRating());
 			interviewRepo.save(interviewEntity);
 			return convertInterviewEntityIntoDto(interviewEntity);
@@ -69,20 +69,31 @@ public class TechServiceImpl implements TechService{
 
 	@Override
 	public Candidate addCandidate(Candidate candidate) {
-		// TODO Auto-generated method stub
-		return null;
+	CandidateEntity candidateEntity=convertCandidateDtoIntoEntity(candidate);
+	candidateRepo.save(candidateEntity);
+	return convertCandidateEntityIntoDto(candidateEntity);
 	}
 
-	@Override
-	public Interview scheduleInterview(Interview interviewSchedule) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	@Override
-	public List<Interview> viewInterviewSchedules() {
-		// TODO Auto-generated method stub
-		return null;
+	public InterviewSchedule scheduleInterview(InterviewSchedule interviewSchedule) {
+	InterviewScheduleEntity interviewScheduleEntity=convertInterviewDtoIntoEntity(interviewSchedule);
+	interviewRepo.save(interviewScheduleEntity);
+	return convertInterviewEntityIntoDto(interviewScheduleEntity);
+	}
+
+
+
+	@Override
+	public List<InterviewSchedule> viewInterviewSchedules() {
+	List<InterviewScheduleEntity> interviewEntities=interviewRepo.findAll();
+	//if(candidateEntities.isEmpty()) { throw new Exception; }
+	List<InterviewSchedule> interviewSchedules=new ArrayList<InterviewSchedule>();
+	for(InterviewScheduleEntity interviewScheduleEntity:interviewEntities) {
+	interviewSchedules.add(convertInterviewEntityIntoDto(interviewScheduleEntity));
+	}
+	return interviewSchedules;
 	}
 	
 	private CandidateEntity convertCandidateDtoIntoEntity(Candidate candidate) {
@@ -97,12 +108,12 @@ public class TechServiceImpl implements TechService{
 		return candidate;
 		}
 		
-		private Interview convertInterviewEntityIntoDto(InterviewEntity interviewEntity) {
-			Interview interview=modelMapper.map(interviewEntity, Interview.class);
+		private InterviewSchedule convertInterviewEntityIntoDto(InterviewScheduleEntity interviewEntity) {
+			InterviewSchedule interview=modelMapper.map(interviewEntity, InterviewSchedule.class);
 			return interview;
 		}
-		private InterviewEntity convertInterviewDtoIntoEntity(Interview interview) {
-			InterviewEntity interviewEntity=modelMapper.map(interview, InterviewEntity.class);
+		private InterviewScheduleEntity convertInterviewDtoIntoEntity(InterviewSchedule interview) {
+			InterviewScheduleEntity interviewEntity=modelMapper.map(interview, InterviewScheduleEntity.class);
 			return interviewEntity;
 		}
 

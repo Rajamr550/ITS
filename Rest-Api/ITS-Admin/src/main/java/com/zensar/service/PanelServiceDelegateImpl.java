@@ -20,7 +20,7 @@ public class PanelServiceDelegateImpl implements PanelServiceDelegate {
 
 	@Override
 	public Candidate shareCandidateWithPanel(Candidate candidate) {
-		String url = "http://localhost:800/candidate/entry";
+		String url = "http://localhost:8005/its-tech/candidate/entry";
 
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
@@ -37,7 +37,7 @@ public class PanelServiceDelegateImpl implements PanelServiceDelegate {
 		HttpEntity<InterviewSchedule> entity = new HttpEntity<>(interviewSchedule, headers);
 
 		ResponseEntity<InterviewSchedule> response = this.restTemplate.postForEntity(
-				"http://API-GATEWAY/its-tech/schedule/entry", entity, InterviewSchedule.class, interviewSchedule);
+				"http://localhost:8005/its-tech/schedule/entry", entity, InterviewSchedule.class, interviewSchedule);
 		return response.getBody();
 	}
 

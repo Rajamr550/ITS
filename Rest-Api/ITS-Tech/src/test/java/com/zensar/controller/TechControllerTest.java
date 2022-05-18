@@ -21,7 +21,7 @@ import org.springframework.test.web.servlet.MvcResult;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zensar.dto.Candidate;
-import com.zensar.dto.Interview;
+import com.zensar.dto.InterviewSchedule;
 import com.zensar.service.TechService;
 
 
@@ -135,9 +135,9 @@ class TechControllerTest {
 	
 	@Test
 	public void testViewInterviewSchedules() throws Exception {
-	List<Interview> interviewList=new ArrayList<>();
-	interviewList.add(new Interview());
-	interviewList.add(new Interview());
+	List<InterviewSchedule> interviewList=new ArrayList<>();
+	interviewList.add(new InterviewSchedule());
+	interviewList.add(new InterviewSchedule());
 
 
 	when(this.techService.viewInterviewSchedules()).thenReturn(interviewList);

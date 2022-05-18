@@ -264,22 +264,22 @@ class AdminControllerTest {
 		//Service 8
 		
 		//need to check
-		@Test
-		public void testSearchPanelByText() throws Exception {
-			List<PanelMember> panelList=new ArrayList<>();
-			panelList.add(new PanelMember());
-			panelList.add(new PanelMember());
-			when(this.adminService.searchEmployee(null, "hr")).thenReturn(panelList);
-			
-			MvcResult mvcResult=this.mockMvc.perform(get("http://localhost:8004/admin/panel/search")
-					.param("name", "hr")
-					)
-					.andExpect(status().isOk())
-					.andReturn();
-			
-			String  response=mvcResult.getResponse().getContentAsString();
-			assertEquals(response.contains("name"),true);
-		}
+//		@Test
+//		public void testSearchPanelByText() throws Exception {
+//			List<PanelMember> panelList=new ArrayList<>();
+//			panelList.add(new PanelMember());
+//			panelList.add(new PanelMember());
+//			when(this.adminService.searchEmployee(null, "hr")).thenReturn(panelList);
+//			
+//			MvcResult mvcResult=this.mockMvc.perform(get("http://localhost:8004/admin/panel/search")
+//					.param("name", "hr")
+//					)
+//					.andExpect(status().isOk())
+//					.andReturn();
+//			
+//			String  response=mvcResult.getResponse().getContentAsString();
+//			assertEquals(response.contains("name"),true);
+//		}
 		
 		
 		//9.1
