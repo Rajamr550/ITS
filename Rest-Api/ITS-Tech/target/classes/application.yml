@@ -12,6 +12,8 @@ management:
 
 
 spring:
+  application:
+    name: TECH-SERVICE
   datasource:
     url: jdbc:mysql://localhost:3306/employeedb
     username: root
@@ -25,8 +27,11 @@ spring:
 
         
         
-application:
-  name: tech-service
-  
-
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    hostname: localhost
+    instance-id: ${spring.application.name}:${random.uuid} 
 

@@ -1,18 +1,11 @@
 server:
   port: 8006
-  
-management:
- endpoints:
-  web:
-#   //base-path: /olx-login-monitor
-   exposure:
-    include: '*'
-
-
 
 spring:
+  application:
+    name: HR-SERVICE
   datasource:
-    url: jdbc:mysql://localhost:3306/its
+    url: jdbc:mysql://localhost:3306/employeedb
     username: root
     password: root
   jpa:
@@ -22,20 +15,29 @@ spring:
       hibernate :
         dialect: org.hibernate.dialect.MySQL8Dialect
 
-        
-        
-application:
-  name: hr-service
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  health:
+    circuitbreakers:
+       enabled: true
+  endpoint:
+    health:
+      show-details: always
+
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    hostname: localhost
+    instance-id: ${spring.application.name}:${random.uuid} 
+  
+  
   
 
-
-
-#eureka:
-# client:
-#  register-with-eureka: true
-#  fetch-registry: true
-# instance:
-#  hostname: localhost
-#  instance-id: ${spring.application.name}:${random.uuid}
         
 

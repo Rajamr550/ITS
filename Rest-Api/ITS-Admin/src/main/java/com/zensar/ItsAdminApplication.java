@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
@@ -20,6 +22,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableSwagger2
+@EnableEurekaClient
 public class ItsAdminApplication {
 
 	public static void main(String[] args) {
@@ -32,9 +35,12 @@ public class ItsAdminApplication {
 	}
 	
 	@Bean
+	@LoadBalanced
 	public RestTemplate getRestTemplate() {
 		return new RestTemplate();
 	}
+	
+	
 	
 	@Bean
 	public Docket getCustomizedDocket() {
@@ -50,7 +56,7 @@ public class ItsAdminApplication {
 	ApiInfo apiInfo=new ApiInfo("Stock Rest Api Documentation",
 	"This page givesRest API Doucmentation ", "2.5",
 	"My Terms of services",
-	new Contact("Interview Tracking System","http://localhot:8084","its-team-2@zensar.com"),
+	new Contact("Interview Tracking System","http://localhot:8004","its-team-2@zensar.com"),
 	"GPL", "http://gpl.org",
 	new ArrayList<VendorExtension>());
 	return apiInfo;
