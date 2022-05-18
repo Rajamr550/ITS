@@ -70,27 +70,26 @@ public class AdminController {
 	
 	//1--Register a candidate
 	@PostMapping(value="/candidate", consumes= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-	public Candidate registerCandidate(@RequestBody Candidate candidate) {
-		return adminServices.registerCandidate(candidate);
+	public Candidate registerCandidate(@RequestBody Candidate candidate, @RequestHeader("Authorization") String authToken) {
+		return adminServices.registerCandidate(candidate, authToken);
 	}
 	
 	//2.1-- View All Candidate 
 	@GetMapping(value="/candidate", produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-	public List<Candidate> getAllCandidates(){
-		return adminServices.getAllCandidates();
+	public List<Candidate> getAllCandidates(@RequestHeader("Authorization") String authToken){
+		return adminServices.getAllCandidates(authToken);
 	}
 	
 	//2.2 -- View a candidate By Id
 	@GetMapping(value="/candidate/{id}", produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-	public Candidate getCandidateById(@PathVariable("id") int id){
-		return adminServices.getCandidateById(id);
+	public Candidate getCandidateById(@PathVariable("id") int id, @RequestHeader("Authorization") String authToken){
+		return adminServices.getCandidateById(id, authToken);
 	}
 	
 	//7 -- Adding Panel Members
 	@PostMapping(value="/panel", consumes= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-	
-	public PanelMember addPanelMember(@RequestBody PanelMember panelMember) {
-		return adminServices.addPanelMember(panelMember);
+	public PanelMember addPanelMember(@RequestBody PanelMember panelMember, @RequestHeader("Authorization") String authToken) {
+		return adminServices.addPanelMember(panelMember, authToken);
 	}
 	
 	

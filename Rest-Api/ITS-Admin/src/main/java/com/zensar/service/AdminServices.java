@@ -10,7 +10,7 @@ public interface AdminServices {
 
 	public Candidate registerCandidate(Candidate candidate);
 
-	public List<Candidate> getAllCandidates(String token);
+//	public List<Candidate> getAllCandidates(String token);
 
 	public Candidate getCandidateById(int id);
 
@@ -50,5 +50,16 @@ public interface AdminServices {
 //	public boolean deleteTechMember(int id);
 //
 //	public boolean deleteHRMember(int id);
+	
+	
+	//satyam
+	
+	public Candidate registerCandidate(Candidate candidate, String authToken);
+
+	public List<Candidate> getAllCandidates(String authToken);
+
+	public Candidate getCandidateById(int id,String authToken);
+
+	public PanelMember addPanelMember(PanelMember panelMember, String authToken);
 	
 }
