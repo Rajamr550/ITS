@@ -56,7 +56,7 @@ import com.zensar.dto.InterviewSchedule;
 import com.zensar.dto.PanelMember;
 import com.zensar.service.AdminServices;
 
-//import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiOperation;
 
 
 @RestController
