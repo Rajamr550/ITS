@@ -1,9 +1,12 @@
 package com.zensar.entity;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+
 
 @Entity
 @Table(name="CandidateDetails")
@@ -19,83 +22,87 @@ public class CandidateEntity {
 	private String designation;
 	private int noticePeriod;
 	private String location;
+	
 	public CandidateEntity(int candidateId, String candidateName, String primarySkills, String secondarySkills,
-			int experience, String qualification, String designation, int noticePeriod, String location) {
-		super();
-		this.candidateId = candidateId;
-		this.candidateName = candidateName;
-		this.primarySkills = primarySkills;
-		this.secondarySkills = secondarySkills;
-		this.experience = experience;
-		this.qualification = qualification;
-		this.designation = designation;
-		this.noticePeriod = noticePeriod;
-		this.location = location;
+	int experience, String qualification, String designation, int noticePeriod, String location) {
+	super();
+	this.candidateId = candidateId;
+	this.candidateName = candidateName;
+	this.primarySkills = primarySkills;
+	this.secondarySkills = secondarySkills;
+	this.experience = experience;
+	this.qualification = qualification;
+	this.designation = designation;
+	this.noticePeriod = noticePeriod;
+	this.location = location;
+	}
+	public CandidateEntity() {
+	super();
 	}
 	public int getCandidateId() {
-		return candidateId;
+	return candidateId;
 	}
 	public void setCandidateId(int candidateId) {
-		this.candidateId = candidateId;
+	this.candidateId = candidateId;
 	}
 	public String getCandidateName() {
-		return candidateName;
+	return candidateName;
 	}
 	public void setCandidateName(String candidateName) {
-		this.candidateName = candidateName;
+	this.candidateName = candidateName;
 	}
 	public String getPrimarySkills() {
-		return primarySkills;
+	return primarySkills;
 	}
 	public void setPrimarySkills(String primarySkills) {
-		this.primarySkills = primarySkills;
+	this.primarySkills = primarySkills;
 	}
 	public String getSecondarySkills() {
-		return secondarySkills;
+	return secondarySkills;
 	}
 	public void setSecondarySkills(String secondarySkills) {
-		this.secondarySkills = secondarySkills;
+	this.secondarySkills = secondarySkills;
 	}
 	public int getExperience() {
-		return experience;
+	return experience;
 	}
 	public void setExperience(int experience) {
-		this.experience = experience;
+	this.experience = experience;
 	}
 	public String getQualification() {
-		return qualification;
+	return qualification;
 	}
 	public void setQualification(String qualification) {
-		this.qualification = qualification;
+	this.qualification = qualification;
 	}
 	public String getDesignation() {
-		return designation;
+	return designation;
 	}
 	public void setDesignation(String designation) {
-		this.designation = designation;
+	this.designation = designation;
 	}
 	public int getNoticePeriod() {
-		return noticePeriod;
+	return noticePeriod;
 	}
 	public void setNoticePeriod(int noticePeriod) {
-		this.noticePeriod = noticePeriod;
+	this.noticePeriod = noticePeriod;
 	}
 	public String getLocation() {
-		return location;
+	return location;
 	}
 	public void setLocation(String location) {
-		this.location = location;
+	this.location = location;
 	}
 	@Override
 	public String toString() {
-		return "CandidateEntity [candidateId=" + candidateId + ", candidateName=" + candidateName + ", primarySkills="
-				+ primarySkills + ", secondarySkills=" + secondarySkills + ", experience=" + experience
-				+ ", qualification=" + qualification + ", designation=" + designation + ", noticePeriod=" + noticePeriod
-				+ ", location=" + location + "]";
+	return "CandidateEntity [candidateId=" + candidateId + ", candidateName=" + candidateName + ", primarySkills="
+	+ primarySkills + ", secondarySkills=" + secondarySkills + ", experience=" + experience
+	+ ", qualification=" + qualification + ", designation=" + designation + ", noticePeriod=" + noticePeriod
+	+ ", location=" + location + "]";
 	}
-	public CandidateEntity() {
-		super();
-	}
+
+
+
 	
 	
 

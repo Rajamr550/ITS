@@ -1,29 +1,16 @@
-package com.zensar.entity;
+package com.zensar.dto;
 
 import java.time.LocalDate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-
-
-@Entity
-@Table(name="InterviewScheduleDetails")
-public class InterviewScheduleEntity {
+public class InterviewSchedule {
 	
-	@Id
 	private int interviewId;
 	private int candidateId;
 	private int techRating;
 	private int hrRating;
 	private String finalStatus;
 	private LocalDate interviewDate;
-	public InterviewScheduleEntity() {
-		super();
-	}
-	public InterviewScheduleEntity(int interviewId, int candidateId, int techRating, int hrRating, String finalStatus,
+	public InterviewSchedule(int interviewId, int candidateId, int techRating, int hrRating, String finalStatus,
 			LocalDate interviewDate) {
 		super();
 		this.interviewId = interviewId;
@@ -32,6 +19,9 @@ public class InterviewScheduleEntity {
 		this.hrRating = hrRating;
 		this.finalStatus = finalStatus;
 		this.interviewDate = interviewDate;
+	}
+	public InterviewSchedule() {
+		super();
 	}
 	public int getInterviewId() {
 		return interviewId;
@@ -71,7 +61,7 @@ public class InterviewScheduleEntity {
 	}
 	@Override
 	public String toString() {
-		return "InterviewEntity [interviewId=" + interviewId + ", candidateId=" + candidateId + ", techRating="
+		return "InterviewDto [interviewId=" + interviewId + ", candidateId=" + candidateId + ", techRating="
 				+ techRating + ", hrRating=" + hrRating + ", finalStatus=" + finalStatus + ", interviewDate="
 				+ interviewDate + "]";
 	}

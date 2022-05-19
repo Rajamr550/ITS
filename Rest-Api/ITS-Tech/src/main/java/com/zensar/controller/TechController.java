@@ -20,7 +20,7 @@ import com.zensar.dto.InterviewSchedule;
 import com.zensar.service.TechService;
 
 @RestController
-@RequestMapping("/its-tech")
+@RequestMapping("/tech")
 @CrossOrigin(origins = "*")
 public class TechController {
 

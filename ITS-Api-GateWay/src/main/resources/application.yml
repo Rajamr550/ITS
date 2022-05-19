@@ -19,11 +19,11 @@ spring:
       - id: Tech-SERVICE
         uri: lb://TECH-SERVICE
         predicates:
-          - Path=/its-tech/**
+          - Path=/tech/**
       - id: HR-SERVICE
         uri: lb://HR-SERVICE
         predicates:
-          - Path=/its-hr/**
+          - Path=/hr/**
           
 
 eureka:

@@ -1,15 +1,7 @@
-package com.zensar.entity;
+package com.zensar.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name="CandidateDetails")
-public class CandidateEntity {
+public class Candidate {
 	
-	@Id
 	private int candidateId;
 	private String candidateName;
 	private String primarySkills;
@@ -19,7 +11,7 @@ public class CandidateEntity {
 	private String designation;
 	private int noticePeriod;
 	private String location;
-	public CandidateEntity(int candidateId, String candidateName, String primarySkills, String secondarySkills,
+	public Candidate(int candidateId, String candidateName, String primarySkills, String secondarySkills,
 			int experience, String qualification, String designation, int noticePeriod, String location) {
 		super();
 		this.candidateId = candidateId;
@@ -31,6 +23,9 @@ public class CandidateEntity {
 		this.designation = designation;
 		this.noticePeriod = noticePeriod;
 		this.location = location;
+	}
+	public Candidate() {
+		super();
 	}
 	public int getCandidateId() {
 		return candidateId;
@@ -88,13 +83,10 @@ public class CandidateEntity {
 	}
 	@Override
 	public String toString() {
-		return "CandidateEntity [candidateId=" + candidateId + ", candidateName=" + candidateName + ", primarySkills="
+		return "CandidateDto [candidateId=" + candidateId + ", candidateName=" + candidateName + ", primarySkills="
 				+ primarySkills + ", secondarySkills=" + secondarySkills + ", experience=" + experience
 				+ ", qualification=" + qualification + ", designation=" + designation + ", noticePeriod=" + noticePeriod
 				+ ", location=" + location + "]";
-	}
-	public CandidateEntity() {
-		super();
 	}
 	
 	
