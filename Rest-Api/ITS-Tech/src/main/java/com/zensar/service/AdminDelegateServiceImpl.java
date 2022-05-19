@@ -17,7 +17,7 @@ public class AdminDelegateServiceImpl implements AdminServiceDelegate {
 	public boolean isDeleteSuccessful(int id) {
 		HttpEntity<Integer> entity = new HttpEntity<>(id);
 
-		ResponseEntity<Boolean> response=this.restTemplate.exchange("http://localhost:8004/admin/panel/tech/{id}", HttpMethod.DELETE, entity, Boolean.class,id);
+		ResponseEntity<Boolean> response=this.restTemplate.exchange("http://API-GATEWAY/admin/panel/tech/{id}", HttpMethod.DELETE, entity, Boolean.class,id);
 		return response.getBody();
 	}
 	

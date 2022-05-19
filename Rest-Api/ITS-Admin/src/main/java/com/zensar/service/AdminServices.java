@@ -16,11 +16,11 @@ public interface AdminServices {
 
 	public PanelMember addPanelMember(PanelMember panelMember);
 
-	public String shareCandidateWithTech(int id);
+	public String shareCandidateWithTech(int id,String token);
 
 
 
-	InterviewSchedule createInterviewSchedule(InterviewSchedule interviewScheduleDto);
+	InterviewSchedule createInterviewSchedule(InterviewSchedule interviewScheduleDto,String token);
 
 //	boolean deleteInterviewScheduleByID(int id);
         

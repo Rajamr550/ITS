@@ -27,7 +27,7 @@ package com.zensar.service;
 	headers.set("Authorization", authToken);
 	HttpEntity entity=new HttpEntity(headers);
 	ResponseEntity<Boolean> response=
-	this.restTemplate.exchange("http://localhost:7003/its-login/token/hr/validate", HttpMethod.GET, entity, Boolean.class);
+	this.restTemplate.exchange("http://API-GATEWAY/its-login/token/hr/validate", HttpMethod.GET, entity, Boolean.class);
 	return response.getBody();
 	}
 

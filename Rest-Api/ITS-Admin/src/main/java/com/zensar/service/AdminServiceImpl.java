@@ -156,8 +156,7 @@ public class AdminServiceImpl implements AdminServices {
 		return convertEntityIntoDTO(panelMemberEntity);
 	}
 
-	
-	//nagaraj
+	// nagaraj
 //	private PanelMember convertEntityIntoDTO(PanelMemberEntity panelMemberEntity) {
 //
 //		PanelMember panelMember = modelMapper.map(panelMemberEntity, PanelMember.class);
@@ -172,7 +171,11 @@ public class AdminServiceImpl implements AdminServices {
 
 	// change method name
 	@Override
-	public String shareCandidateWithTech(int interviewScheduleId) {
+	public String shareCandidateWithTech(int interviewScheduleId, String token) {
+		if (!userServiceDelegate.isTokenValid(token)) {
+			throw new InvalidAuthTokenException();
+
+		}
 
 		InterviewScheduleEntity interviewScheduleEntity2 = interviewScheduleRepo.getById(interviewScheduleId);
 
@@ -187,15 +190,24 @@ public class AdminServiceImpl implements AdminServices {
 					.shareScheduleWithPanel(convertEntityIntoDTOForInterviewScheduleSchedule(interviewScheduleEntity2));
 			return "data shared successfully";
 
+		} 
+		
+		else {
+			throw new InvalidDataShared();
+
 		}
-		throw new InvalidDataShared();
+
 	}
 
-	@Override
-	public InterviewSchedule createInterviewSchedule(InterviewSchedule interviewScheduleDto) {
 
-		interviewScheduleRepo.save(convertDTOIntoEntityForInterviewSchedule(interviewScheduleDto));
-		return interviewScheduleDto;
+
+	@Override
+	public InterviewSchedule createInterviewSchedule(InterviewSchedule interviewScheduleDto, String token) {
+		if (userServiceDelegate.isTokenValid(token)) {
+			interviewScheduleRepo.save(convertDTOIntoEntityForInterviewSchedule(interviewScheduleDto));
+			return interviewScheduleDto;
+		}
+		throw new InvalidAuthTokenException();
 	}
 
 //	@Override
@@ -287,17 +299,16 @@ public class AdminServiceImpl implements AdminServices {
 //		// TODO Auto-generated method stub
 //		return null;
 //	}
-	
-	
-	//satyam
-	
+
+	// satyam
+
 	@Override
 	public Candidate registerCandidate(Candidate candidate, String authToken) {
-		if(userServiceDelegate.isTokenValid(authToken)) {
-		CandidateEntity candidateEntity = convertDTOintoEntity(candidate);
-		candidateEntity = candidateRepo.save(candidateEntity);
+		if (userServiceDelegate.isTokenValid(authToken)) {
+			CandidateEntity candidateEntity = convertDTOintoEntity(candidate);
+			candidateEntity = candidateRepo.save(candidateEntity);
 
-		return convertEntityintoDTO(candidateEntity);
+			return convertEntityintoDTO(candidateEntity);
 		}
 		throw new InvalidAuthTokenException();
 	}
@@ -316,26 +327,26 @@ public class AdminServiceImpl implements AdminServices {
 
 	@Override
 	public List<Candidate> getAllCandidates(String authToken) {
-		if(userServiceDelegate.isTokenValid(authToken)) {
-		List<CandidateEntity> candidateEntityList =candidateRepo.findAll();
-		List<Candidate> candidateDtoList=new ArrayList<Candidate>();
-		for(CandidateEntity candidateEntity : candidateEntityList) {
-			
-			Candidate candidate=convertEntityintoDTO(candidateEntity);
-			candidateDtoList.add(candidate);
-		}
-		return  candidateDtoList;
+		if (userServiceDelegate.isTokenValid(authToken)) {
+			List<CandidateEntity> candidateEntityList = candidateRepo.findAll();
+			List<Candidate> candidateDtoList = new ArrayList<Candidate>();
+			for (CandidateEntity candidateEntity : candidateEntityList) {
+
+				Candidate candidate = convertEntityintoDTO(candidateEntity);
+				candidateDtoList.add(candidate);
+			}
+			return candidateDtoList;
 		}
 		throw new InvalidAuthTokenException();
 	}
 
 	@Override
 	public Candidate getCandidateById(int id, String authToken) {
-		if(userServiceDelegate.isTokenValid(authToken)) {
-		Optional<CandidateEntity> opCandidateEntity = candidateRepo.findById(id);
-		if(opCandidateEntity.isPresent()) {
-			CandidateEntity candidateEntity=opCandidateEntity.get();
-			return convertEntityintoDTO(candidateEntity);
+		if (userServiceDelegate.isTokenValid(authToken)) {
+			Optional<CandidateEntity> opCandidateEntity = candidateRepo.findById(id);
+			if (opCandidateEntity.isPresent()) {
+				CandidateEntity candidateEntity = opCandidateEntity.get();
+				return convertEntityintoDTO(candidateEntity);
 			}
 		}
 		throw new InvalidIdException();
@@ -343,15 +354,15 @@ public class AdminServiceImpl implements AdminServices {
 
 	@Override
 	public PanelMember addPanelMember(PanelMember panelMember, String authToken) {
-		if(userServiceDelegate.isTokenValid(authToken)) {
-		PanelMemberEntity panelMemberEntity = convertDTOIntoEntity(panelMember);
-		panelMemberEntity = panelMemberRepo.save(panelMemberEntity);
+		if (userServiceDelegate.isTokenValid(authToken)) {
+			PanelMemberEntity panelMemberEntity = convertDTOIntoEntity(panelMember);
+			panelMemberEntity = panelMemberRepo.save(panelMemberEntity);
 
-		return convertEntityIntoDTO(panelMemberEntity);
+			return convertEntityIntoDTO(panelMemberEntity);
 		}
 		throw new InvalidAuthTokenException();
 	}
-	
+
 	private PanelMember convertEntityIntoDTO(PanelMemberEntity panelMemberEntity) {
 
 		PanelMember panelMember = modelMapper.map(panelMemberEntity, PanelMember.class);

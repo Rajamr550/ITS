@@ -110,15 +110,15 @@ public class AdminController {
     	    MediaType.APPLICATION_XML_VALUE })
     @ApiOperation(value = "shareDataWithTech", notes = "This api will map the tech id with candidate id for the interview")
 
-        public String shareCandidateWithTech(@PathVariable("id") int id) {
-    	return adminServices.shareCandidateWithTech(id);
+        public String shareCandidateWithTech(@PathVariable("id") int id,@RequestHeader("Authorization") String token) {
+    	return adminServices.shareCandidateWithTech(id,token);
         }
 
         @PostMapping(value = "/interview", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
         @ApiOperation(value = "createInterview", notes = "This api will create a new interview")
 
-        public InterviewSchedule createInterview(@RequestBody InterviewSchedule interviewDto) {
-    	return adminServices.createInterviewSchedule(interviewDto);
+        public InterviewSchedule createInterview(@RequestBody InterviewSchedule interviewDto,@RequestHeader("Authorization") String token) {
+    	return adminServices.createInterviewSchedule(interviewDto,token);
         }
 
         @DeleteMapping(value = "/interview/{id}")
