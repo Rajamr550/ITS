@@ -42,7 +42,7 @@ class AdminControllerTest {
 	@Autowired
 	ObjectMapper objectMapper;
 	
-	/*
+	
 	//Service 1
 		@Test
 		public void testAddCandidate() throws Exception{
@@ -52,7 +52,7 @@ class AdminControllerTest {
 			HttpHeaders httpHeaders=new HttpHeaders();
 			httpHeaders.set("Authorization", "Tom");
 			
-			when(this.adminService.addCandidate(candidate, "Tom")).thenReturn(candidate);
+			when(this.adminService.registerCandidate(candidate, "Tom")).thenReturn(candidate);
 			
 			MvcResult mvcResult=this.mockMvc.perform(post("http://localhost:8004/admin/candidate")
 					.contentType("application/json")
@@ -60,14 +60,14 @@ class AdminControllerTest {
 					.headers(httpHeaders)
 					)
 					.andExpect(status().isOk())
-					.andExpect(content().string(containsString("sample")))
+//					.andExpect(content().string(containsString("sample")))
 					.andReturn();
 			
 			String response=mvcResult.getResponse().getContentAsString();
 			assertEquals(response.contains("sample"),true);
 		}
 		
-		*/
+		
 		
 		//Service 2.1
 		@Test
@@ -233,7 +233,7 @@ class AdminControllerTest {
 		}
 		
 		
-		/*
+		
 		//7
 		@Test
 		public void testAddPanelMember() throws Exception{
@@ -251,14 +251,14 @@ class AdminControllerTest {
 					.headers(httpHeaders)
 					)
 					.andExpect(status().isOk())
-					.andExpect(content().string(containsString("sample")))
+//					.andExpect(content().string(containsString("sample")))
 					.andReturn();
 			
 			String response=mvcResult.getResponse().getContentAsString();
 			assertEquals(response.contains("sample"),true);
 		}
 		
-		*/
+		
 		
 		
 		//Service 8

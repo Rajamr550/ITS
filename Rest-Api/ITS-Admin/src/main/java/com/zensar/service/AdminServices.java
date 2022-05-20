@@ -61,5 +61,7 @@ public interface AdminServices {
 	public Candidate getCandidateById(int id,String authToken);
 
 	public PanelMember addPanelMember(PanelMember panelMember, String authToken);
+
+	public List<InterviewSchedule> getAllInterviews();
 	
 }

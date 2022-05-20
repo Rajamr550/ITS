@@ -97,8 +97,23 @@ public class AdminServiceImpl implements AdminServices {
 	}
 
 	// logic
+	
+	//extra
+	@Override
+	public List<InterviewSchedule> getAllInterviews() {
+		List<InterviewScheduleEntity> interviewScheduleEntityList = interviewScheduleRepo.findAll();
+		List<InterviewSchedule> interviewScheduleList= new ArrayList<InterviewSchedule>();
+		for (InterviewScheduleEntity interviewScheduleEntity : interviewScheduleEntityList) {
+
+			InterviewSchedule interviewSchedule = convertEntityIntoDTOForInterviewScheduleSchedule(interviewScheduleEntity);
+			interviewScheduleList.add(interviewSchedule);
+		}
+		return interviewScheduleList;
+	}
 
 	// 6- delete interview by id
+	
+	
 
 	@Override
 	public boolean deleteInterviewScheduleByID(int id, String token) {
@@ -374,5 +389,7 @@ public class AdminServiceImpl implements AdminServices {
 		PanelMemberEntity panelMemberEntity = modelMapper.map(panelMember, PanelMemberEntity.class);
 		return panelMemberEntity;
 	}
+
+
 
 }

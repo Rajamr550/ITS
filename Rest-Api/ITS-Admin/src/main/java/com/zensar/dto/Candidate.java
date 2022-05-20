@@ -3,7 +3,6 @@ package com.zensar.dto;
 //entering a new messsage
 public class Candidate {
 
-	
 	private int candidateId;
 	private String candidateName;
 	private String primarySkills;
@@ -13,10 +12,10 @@ public class Candidate {
 	private String designation;
 	private int noticePeriod;
 	private String location;
-	
+
 	public Candidate() {
 		super();
-		
+
 	}
 
 	public Candidate(int candidateId, String candidateName, String primarySkills, String secondarySkills,
@@ -112,5 +111,14 @@ public class Candidate {
 				+ ", qualification=" + qualification + ", designation=" + designation + ", noticePeriod=" + noticePeriod
 				+ ", location=" + location + "]";
 	}
-	
+
+	@Override
+	public boolean equals(Object obj) {
+		Candidate candidate = (Candidate) obj;
+		if (this.candidateName.equals(candidate.getCandidateName())) {
+			return true;
+		}
+		return false;
+	}
+
 }

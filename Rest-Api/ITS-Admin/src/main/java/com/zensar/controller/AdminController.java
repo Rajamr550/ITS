@@ -128,6 +128,12 @@ public class AdminController {
     	return adminServices.deleteInterviewScheduleByID(id,token);
         }
 	
+        //extra
+    	@GetMapping(value="/interviews", produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    	@ApiOperation(value = "Get all interviews", notes = "This Rest API will help to view all interviews")
+    	public List<InterviewSchedule> getAllInterviews(){
+    		return adminServices.getAllInterviews();
+    	}
 	      //8
         @GetMapping(value="/panel/search",consumes= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})        
         @ApiOperation(value = "searchPanelMembers", notes = "This REST API saerches panel member ")
