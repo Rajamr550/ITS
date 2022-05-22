@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService {
 			throw new InvalidCredentialsException();
 		}
 		String jwt=jwtUtil.generateToken(user.getUserName());
-		return jwt;
+		return "{ \"jwt\": \"" + jwt + "\"}";
 	}
 
 	/*

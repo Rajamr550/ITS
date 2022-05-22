@@ -258,6 +258,26 @@ class AdminControllerTest {
 			assertEquals(response.contains("sample"),true);
 		}
 		
+		@Test
+		public void testViewInterviewSchedules() throws Exception {
+		List<InterviewSchedule> interviewList=new ArrayList<>();
+		interviewList.add(new InterviewSchedule());
+		interviewList.add(new InterviewSchedule());
+
+
+		when(this.adminService.getAllInterviews()).thenReturn(interviewList);
+
+		MvcResult mvcResult=this.mockMvc.perform(get("http://localhost:8004/admin/interviews")
+
+
+
+		)
+		.andExpect(status().isOk())
+		.andReturn();
+
+		String response=mvcResult.getResponse().getContentAsString();
+		assertEquals(response.contains("finalStatus"),true);
+		}
 		
 		
 		

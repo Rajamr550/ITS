@@ -13,7 +13,6 @@ public class InterviewScheduleEntity {
 
 	
 	@Id
-	@GeneratedValue
 	private int interviewId;
 	private int candidateId;
 	private int techRating;
