@@ -1,0 +1,46 @@
+<div class="form-outline">
+    <!-- <input type="search" id="form1" class="form-control" placeholder="Type query" aria-label="Search" /> -->
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Interview Id</th>
+            <th scope="col">Candidate Id</th>
+            <th scope="col">Tech Rating</th>
+            <th scope="col">HR Rating</th>
+            <th scope="col">Status</th>
+            <th scope="col">Scheduled Interview</th>
+            
+
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr class="table-active" *ngFor="let data of techData; let i = index">
+            <ng-container *ngIf="!data.isEdit">
+                <td>{{data.interviewId}}</td>
+                <td>{{data.candidateId}}</td> 
+                <td>{{data.techRating}}</td> 
+                <td>{{data.hrRating}}</td>
+                <td>{{data.finalStatus}}</td>
+                <td>{{data.interviewDate}}</td>              
+            </ng-container>
+            
+            
+            <ng-container *ngIf="data.isEdit">
+                <td><input type='text' [(ngModel)]='data.finalStatus'></td>
+                <td><input type='text' [(ngModel)]='data.techRating'></td>
+            </ng-container>
+             <td>
+                <input type="button" value="Edit" (click)='data.isEdit=true'>
+                <!-- <input type="button" value="Delete" (click)=deleteAdvertise(i)> -->
+            </td>
+            
+            <td *ngIf="data.isEdit">
+                <input type="button" value="Save" (click)='saveTechData(i)'>
+            </td>
+        </tr>
+    </tbody>
+
+
+</table>

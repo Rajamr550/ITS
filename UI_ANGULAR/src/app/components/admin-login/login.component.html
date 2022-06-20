@@ -1,0 +1,45 @@
+<!--<p>advertisement-form-component works!</p> -->
+<div class="container-sm" style="border:1px solid #cecece;">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1 class="form-label" style="margin-top: 2.5%;margin-left: 7.5%;">Login Form </h1>
+      <br>
+
+      <form [formGroup]="loginForm" (ngSubmit)="submitLogin()">
+
+        <div class="container col-sm">
+
+
+          <div class="form-group">
+            <label class="form-label">Username</label>
+            <input type="text" formControlName="userName" class=" form-control" placeholder="userName"
+              style="width: 50%;" />
+            <div *ngIf="loginForm.controls['userName'].hasError('required')" class="alert alert-danger">
+              Please Add user Name
+            </div>
+          </div>
+          <br>
+          <div class="form-group">
+            <label class="form-label">Password</label>
+            <input type="text" formControlName="password" class=" form-control" placeholder="password"
+              style="width: 50%;" />
+            <div *ngIf="loginForm.controls['password'].hasError('required')" class="alert alert-danger">
+              Please Add user Name
+            </div>
+          </div>
+
+
+          <br />
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+          <br />
+        </div>
+
+
+      </form>
+
+      <button (click)="gotoSecond()">Home</button>
+    </div>
+  </div>
+</div>

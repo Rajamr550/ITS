@@ -1,0 +1,142 @@
+<!--	private Integer employeeId;
+	private String name;
+	private String type;
+	private String location;-->
+
+<h1>ADD PannelMember Form </h1>
+<br><br>
+
+<form [formGroup]="panelForm" (ngSubmit)="submitPanelForm()">
+
+    <div class="container">
+        <!--
+            <div class="form-group">
+                <input type="number" formControlName="employeeId" placeholder="enter employeeId Id" class="form-control" />
+            </div>
+            <div *ngIf="pannelForm.controls['employeeId'].hasError('required')" class="alert alert-danger">
+                Please Enter EmployeeId
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="text" formControlName="name" class=" form-control" placeholder="name" />
+                <div *ngIf="pannelForm.controls['name'].hasError('required')" class="alert alert-danger">
+                    Enter PannelMemberName
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="text" formControlName="Tech or Hr" class=" form-control" placeholder="Tech or Hr" />
+                <div *ngIf="pannelForm.controls['Tech or Hr'].hasError('required')" class="alert alert-danger">
+                    Please Add PannelMemberType(Tech or HR)
+                </div>
+            </div>
+        </div>
+        <br>
+
+
+        <div class="form-group">
+            <input type="text" formControlName="Tech or Hr" class="form-control" placeholder="Tech or Hr" />
+            <div *ngIf="pannelForm.controls['Tech or Hr'].hasError('required')" class="alert alert-danger">
+                Please Add PannelMemberType(Tech or HR)
+            </div>
+        </div>
+        <br>
+
+        <div class="form-group">
+            <input type="text" formControlName="location" class="form-control" placeholder="location" />
+            <div *ngIf="pannelForm.controls['location'].hasError('required')" class="alert alert-danger">
+                Please Add location
+            </div>
+            <br />
+            -->
+        <div class="form-group">
+
+            <input type="number" formControlName="employeeId" placeholder="Employee Id" class="form-control" />
+
+        </div>
+        <br />
+
+        <div class="form-group">
+
+            <input type="text" formControlName="name" class="form-control" placeholder="Employee Name" />
+
+            <div *ngIf="panelForm.controls['name'].hasError('required')" class="alert alert-danger">
+
+                Please Add Name
+
+            </div>
+
+            <div *ngIf="panelForm.controls['name'].hasError('minlength')" class="alert alert-danger">
+
+                Please Add Minimum Length 3
+
+            </div>
+
+        </div>
+        <br />
+
+        <div class="form-group">
+
+            <select formControlName="type" class="form-control" placeholder="Type">
+
+                <option>Tech</option>
+
+                <option>Hr</option>
+
+            </select>
+
+        </div>
+        <br />
+        <div class="form-group">
+            <input type="text" formControlName="location" class="form-control" placeholder="Location" />
+            <div *ngIf="panelForm.controls['location'].hasError('required')" class="alert alert-danger">
+                Please type location
+            </div>
+
+        </div>
+
+    </div>
+    <br />
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+    <br />
+</form>
+
+<div class="container">
+    <div class="form-group row">
+    <label for="search" class="col-sm-2 col-form-label" style="text-align: right">Search</label>
+    <div class="col-sm-6">
+    <input type="text" #searchTxt (keyup) = "0" class="form-control"/>
+    </div>
+ </div>
+    <table>
+        <table class="table table-striped table-hover">
+            <thead>
+
+                <tr>
+
+                    <th scope="col">EmployeeId</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let detail of  forms | search:searchTxt.value">
+                    <td>
+                        {{detail.employeeId}}
+                    </td>
+
+                    <td>{{detail.name}}</td>
+                    <td>{{detail.type}}</td>
+                    <td>{{detail.location}}</td>
+                    <td><button type="button" class="btn btn-success bg-danger"
+                            (click)="deleteBypannelId(detail.employeeId,detail.type)">Delete</button></td>
+
+
+                </tr>
+
+            </tbody>
+        </table>
