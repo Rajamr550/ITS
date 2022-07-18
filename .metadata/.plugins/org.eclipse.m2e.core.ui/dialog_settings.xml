@@ -70,6 +70,7 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="D:\ITS\Rest-Api\ITS-Admin"/>
 			<item value="C:\Users\RM66237\Documents\AAAAaaa\ProductApp"/>
 			<item value="C:\Users\RM66237\Documents\product-app\Product"/>
 			<item value="C:\Users\RM66237\Downloads\ProductCatalogApp"/>

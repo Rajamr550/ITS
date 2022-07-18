@@ -1,30 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="initState"/>
+		<item key="selection" value="Candidate"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="true"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="Interview"/>
+			<item value="advRepo"/>
+			<item value="interviewDtoEntity"/>
+			<item value="InterviewDtoEntity"/>
+			<item value="user"/>
+			<item value="User"/>
+			<item value="InterviewEntity"/>
+			<item value="InterviewScheduleEntity"/>
+			<item value="PanelMemberEntity"/>
 			<item value="RemovesBooksAction"/>
 			<item value="initialState"/>
 			<item value="updated_prods"/>
 			<item value="products"/>
 			<item value="//(.?+)+"/>
 			<item value="Akshay"/>
-			<item value="//"/>
-			<item value="abhishek"/>
-			<item value="http://localhost:9000/olx-login/"/>
-			<item value="ak"/>
-			<item value="akshay"/>
-			<item value="akshay123"/>
-			<item value="akshaygolkonda"/>
-			<item value="abhishek123"/>
-			<item value="abhishekgolkonda"/>
 		</list>
 		<list key="replacehistory">
+			<item value="Candidate"/>
+			<item value="Employee"/>
+			<item value="interviewRepo"/>
+			<item value="interviewEntity"/>
+			<item value="InterviewEntity"/>
+			<item value="interviewDto"/>
+			<item value="InterviewDto"/>
+			<item value="EmployeeEntity"/>
 			<item value="delete"/>
 			<item value="initState"/>
 			<item value="newProds"/>
@@ -32,21 +40,13 @@
 			<item value=""/>
 			<item value="raja"/>
 			<item value="http://localhost:9009/olx/login/"/>
-			<item value="KKKRRR"/>
-			<item value="adv"/>
-			<item value="status"/>
-			<item value="Status"/>
-			<item value="masterService"/>
-			<item value="MasterService"/>
-			<item value="category"/>
-			<item value="Category"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="411"/>
-		<item key="DIALOG_Y_ORIGIN" value="283"/>
+		<item key="DIALOG_X_ORIGIN" value="289"/>
+		<item key="DIALOG_Y_ORIGIN" value="346"/>
 		<item key="DIALOG_WIDTH" value="414"/>
 		<item key="DIALOG_HEIGHT" value="454"/>
-		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|5|0|Segoe UI"/>
 	</section>
 </section>

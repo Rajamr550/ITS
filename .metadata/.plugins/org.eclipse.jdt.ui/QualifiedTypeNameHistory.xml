@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.olx.controller.AdvController"/>
-    <fullyQualifiedTypeName name="org.springframework.boot.test.mock.mockito.MockBean"/>
-    <fullyQualifiedTypeName name="com.olx.service.AdvService"/>
-    <fullyQualifiedTypeName name="org.springframework.aop.config.AdvisorComponentDefinition"/>
-    <fullyQualifiedTypeName name="org.springframework.test.web.servlet.MvcResult"/>
-    <fullyQualifiedTypeName name="javax.swing.Spring"/>
-    <fullyQualifiedTypeName name="com.olx.dto.Adv"/>
-    <fullyQualifiedTypeName name="com.fasterxml.jackson.databind.ObjectMapper"/>
     <fullyQualifiedTypeName name="org.junit.jupiter.api.Test"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
@@ -21,7 +13,6 @@
     <fullyQualifiedTypeName name="com.zensar.service.BlogService"/>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="org.springframework.data.mongodb.repository.MongoRepository"/>
-    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
     <fullyQualifiedTypeName name="com.zensar.repo.BlogRepo"/>
     <fullyQualifiedTypeName name="com.zensar.exception.InvalidIdException"/>
     <fullyQualifiedTypeName name="java.util.Optional"/>
@@ -51,7 +42,6 @@
     <fullyQualifiedTypeName name="com.olx.service.MasterDelegateImpl"/>
     <fullyQualifiedTypeName name="com.olx.controller.MasterController"/>
     <fullyQualifiedTypeName name="com.olx.dto.Category"/>
-    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="com.olx.service.LoginServiceDelegate"/>
     <fullyQualifiedTypeName name="com.olx.exception.InvalidAuthTokenException"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestHeader"/>
@@ -60,4 +50,14 @@
     <fullyQualifiedTypeName name="org.springframework.http.client.HttpComponentsClientHttpRequestFactory"/>
     <fullyQualifiedTypeName name="org.apache.http.impl.client.HttpClients"/>
     <fullyQualifiedTypeName name="org.springframework.context.annotation.Bean"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Qualifier"/>
+    <fullyQualifiedTypeName name="com.zensar.repo.InterviewRepo"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="org.modelmapper.ModelMapper"/>
+    <fullyQualifiedTypeName name="com.zensar.dto.InterviewDto"/>
+    <fullyQualifiedTypeName name="com.zensar.repo.CandidateRepo"/>
+    <fullyQualifiedTypeName name="com.zensar.repo.EmployeeRepo"/>
+    <fullyQualifiedTypeName name="com.zensar.entity.InterviewEntity"/>
+    <fullyQualifiedTypeName name="com.zensar.entity.CandidateEntity"/>
 </qualifiedTypeNameHistroy>
